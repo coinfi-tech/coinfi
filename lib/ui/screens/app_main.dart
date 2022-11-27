@@ -8,7 +8,7 @@ import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 import '../constants/colors.dart';
 import 'global_widgets/icons/app_icons.dart';
-import 'market/home.dart';
+import 'home/home.dart';
 
 class AppMain extends StatelessWidget {
   AppMain({Key? key}) : super(key: key);
