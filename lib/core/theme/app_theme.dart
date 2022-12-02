@@ -1,9 +1,10 @@
 import 'dart:ui';
 
+import 'package:coinfi/core/theme/font_family.dart';
 import 'package:flutter/material.dart';
 
-import 'colors.dart';
-import 'font_family.dart';
+import 'package:coinfi/core/theme/colors.dart';
+import 'package:coinfi/core/theme/text_styles.dart';
 
 /// Colour Creation:
 /// In order to create the custom colours you need to create a `Map<int, Color>` object
@@ -22,21 +23,15 @@ import 'font_family.dart';
 /// instead use: Theme.of(context).textTheme.heading6.copyWith(color: orange) etc.
 
 TextTheme textTheme = const TextTheme(
-  headline1:
-      TextStyle(fontSize: 40, height: 40, fontWeight: FontWeight.w600),
-  headline2:
-      TextStyle(fontSize: 32, height: 36, fontWeight: FontWeight.w600),
-  headline3:
-      TextStyle(fontSize: 28, height: 32, fontWeight: FontWeight.w600),
-  headline4:
-      TextStyle(fontSize: 20, height: 24, fontWeight: FontWeight.w600),
-  headline5:
-      TextStyle(fontSize: 16, height: 24, fontWeight: FontWeight.w600),
-  headline6:
-      TextStyle(fontSize: 12, height: 12, fontWeight: FontWeight.w600),
+  headline1: TextStyle(fontSize: 40, height: 40, fontWeight: FontWeight.w600),
+  headline2: TextStyle(fontSize: 32, height: 36, fontWeight: FontWeight.w600),
+  headline3: TextStyle(fontSize: 28, height: 32, fontWeight: FontWeight.w600),
+  headline4: TextStyle(fontSize: 20, height: 24, fontWeight: FontWeight.w600),
+  headline5: TextStyle(fontSize: 16, height: 24, fontWeight: FontWeight.w600),
+  headline6: TextStyle(fontSize: 12, height: 12, fontWeight: FontWeight.w600),
 );
 
-final ThemeData themeData =  ThemeData(
+final ThemeData themeData = ThemeData(
   ///TEXT
   textTheme: textTheme,
   fontFamily: FontFamily.lato,

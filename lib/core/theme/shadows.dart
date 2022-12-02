@@ -1,9 +1,7 @@
+import 'package:coinfi/core/theme/colors.dart';
 import 'package:flutter/material.dart';
 
-import 'colors.dart';
-
 class AppShadows {
-
   static List<BoxShadow> cardShadowMedium = [
     BoxShadow(
       color: Colors.black.withOpacity(0.04),
@@ -111,8 +109,4 @@ class AppShadows {
       offset: const Offset(0, 3),
     ),
   ];
-
-
-
-
 }

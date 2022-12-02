@@ -1,14 +1,14 @@
-import 'package:coinfi/controllers/app_main_screen_controller.dart';
-import 'package:coinfi/ui/constants/text_styles.dart';
-import 'package:coinfi/ui/screens/market/market.dart';
+import 'package:coinfi/core/theme/colors.dart';
+import 'package:coinfi/core/theme/text_styles.dart';
+import 'package:coinfi/modules/global_widgets/icons/app_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
-import '../constants/colors.dart';
-import 'global_widgets/icons/app_icons.dart';
-import 'home/home.dart';
+import '../../home/ui/home.dart';
+import '../../market/ui/market.dart';
+import '../state/controllers/app_main_screen_controller.dart';
 
 class AppMain extends StatelessWidget {
   AppMain({Key? key}) : super(key: key);
@@ -16,10 +16,7 @@ class AppMain extends StatelessWidget {
   final AppMainScreenController appMainController = Get.find();
 
   List<Widget> _buildScreens() {
-    return [
-      Home(),
-      Market()
-    ];
+    return [Home(), Market()];
   }
 
   List<PersistentBottomNavBarItem> _navBarsItems(BuildContext context) {
@@ -34,7 +31,6 @@ class AppMain extends StatelessWidget {
         // title: "Home",
 
         // textStyle: AppTextStyles.bodySmall
-
       ),
       PersistentBottomNavBarItem(
         icon: const Icon(
@@ -70,7 +66,7 @@ class AppMain extends StatelessWidget {
       hideNavigationBarWhenKeyboardShows: true,
       // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
       decoration:
-      const NavBarDecoration(colorBehindNavBar: Colors.white, boxShadow: [
+          const NavBarDecoration(colorBehindNavBar: Colors.white, boxShadow: [
         BoxShadow(
           color: AppColors.uiGray_20,
           blurRadius: 1,

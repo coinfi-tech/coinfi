@@ -1,10 +1,9 @@
-import 'package:coinfi/data/models/test/static_test_data.dart';
-import 'package:coinfi/ui/screens/market/widgets/instrument_tile.dart';
-import 'package:get/get.dart';
+import 'package:coinfi/data/models/test_data/instrument_test_data.dart';
+import 'package:coinfi/modules/market/ui/widgets/instrument_tile.dart';
 import 'package:flutter/material.dart';
 
-import '../../constants/colors.dart';
-import '../../constants/text_styles.dart';
+import 'package:coinfi/core/theme/colors.dart';
+import 'package:coinfi/core/theme/text_styles.dart';
 
 class Market extends StatelessWidget {
   const Market({Key? key}) : super(key: key);
@@ -23,9 +22,15 @@ class Market extends StatelessWidget {
       body: SafeArea(
           child: Column(
         children: [
-          InstrumentTile(instrument: StaticTestData.btc,),
-          InstrumentTile(instrument: StaticTestData.eth,),
-          InstrumentTile(instrument: StaticTestData.sol,),
+          InstrumentTile(
+            instrument: InstrumentTestData.btc,
+          ),
+          InstrumentTile(
+            instrument: InstrumentTestData.eth,
+          ),
+          InstrumentTile(
+            instrument: InstrumentTestData.sol,
+          ),
         ],
       )),
     );
