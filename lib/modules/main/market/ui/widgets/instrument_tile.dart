@@ -1,14 +1,15 @@
 import 'package:coinfi/data/models/instrument_model.dart';
-import 'package:coinfi/modules/instrument/ui/instrument_bottom_sheet.dart';
+import 'package:coinfi/modules/main/market/ui/widgets/instrument_bottom_sheet/instrument_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 
 import 'package:coinfi/core/theme/colors.dart';
 import 'package:coinfi/core/theme/text_styles.dart';
 
 class InstrumentTile extends StatelessWidget {
-  InstrumentTile({Key? key, required this.instrument}) : super(key: key);
+  const InstrumentTile({Key? key, required this.instrument}) : super(key: key);
 
   final InstrumentModel instrument;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -16,7 +17,7 @@ class InstrumentTile extends StatelessWidget {
         GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () {
-            showInstrumentBottomSheet(context, instrument);
+            showInstrumentBottomSheet(context);
           },
           child: Container(
             padding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
@@ -68,21 +69,24 @@ class InstrumentTile extends StatelessWidget {
       ],
     );
   }
-}
 
-void showInstrumentBottomSheet(
-    BuildContext context, InstrumentModel instrumentModel) {
-  showModalBottomSheet(
-    isScrollControlled: true,
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(15), topRight: Radius.circular(15)),
-    ),
-    backgroundColor: Colors.white,
-    context: context,
-    builder: (BuildContext context) {
-      return FractionallySizedBox(
-          heightFactor: 0.8, child: InstrumentBottomSheetLayout());
-    },
-  );
+  void showInstrumentBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(15), topRight: Radius.circular(15)),
+      ),
+      backgroundColor: Colors.white,
+      context: context,
+      builder: (BuildContext context) {
+        return FractionallySizedBox(
+          heightFactor: 0.8,
+          child: InstrumentBottomSheetLayout(
+            instrument: instrument,
+          ),
+        );
+      },
+    );
+  }
 }

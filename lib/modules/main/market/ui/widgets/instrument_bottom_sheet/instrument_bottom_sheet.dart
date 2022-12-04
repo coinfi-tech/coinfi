@@ -1,15 +1,21 @@
 import 'package:coinfi/core/theme/colors.dart';
 import 'package:coinfi/core/theme/text_styles.dart';
+import 'package:coinfi/data/models/instrument_model.dart';
 import 'package:coinfi/data/models/test_data/market_test_data.dart';
 import 'package:coinfi/modules/global_widgets/buttons/button_primary_A.dart';
 import 'package:coinfi/modules/global_widgets/buttons/button_primary_B.dart';
 import 'package:coinfi/modules/global_widgets/buttons/button_secondary.dart';
-import 'package:coinfi/modules/instrument/ui/widgets/market_depth.dart';
-import 'package:coinfi/modules/instrument/ui/widgets/market_stats.dart';
+import 'package:coinfi/modules/main/market/ui/widgets/instrument_bottom_sheet/widgets/market_depth.dart';
+import 'package:coinfi/modules/main/market/ui/widgets/instrument_bottom_sheet/widgets/market_stats.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../../global_widgets/divider/divider.dart';
+
 class InstrumentBottomSheetLayout extends StatelessWidget {
-  const InstrumentBottomSheetLayout({Key? key}) : super(key: key);
+  const InstrumentBottomSheetLayout({Key? key, required this.instrument})
+      : super(key: key);
+
+  final InstrumentModel instrument;
 
   @override
   Widget build(BuildContext context) {
@@ -34,10 +40,6 @@ class InstrumentBottomSheetLayout extends StatelessWidget {
             marketDepthSection(),
             dividerWithPadding(),
             marketStatsSection(),
-
-            ///OHLP
-
-            ///TABLE
           ],
         ),
       ],
@@ -89,10 +91,7 @@ Widget marketDepthSection() {
 Widget dividerWithPadding() {
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 24.0),
-    child: const Divider(
-      color: AppColors.uiGray_40,
-      height: 0,
-    ),
+    child: AppDivider.uiDividerGray,
   );
 }
 

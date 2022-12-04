@@ -1,5 +1,5 @@
 import 'package:coinfi/data/models/market_stats_model.dart';
-import 'package:coinfi/modules/instrument/ui/widgets/market_stats_table.dart';
+import 'package:coinfi/modules/main/market/ui/widgets/instrument_bottom_sheet/widgets/market_stats_table.dart';
 import 'package:flutter/material.dart';
 
 import 'package:coinfi/core/theme/colors.dart';

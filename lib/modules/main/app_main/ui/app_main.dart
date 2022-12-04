@@ -1,19 +1,18 @@
 import 'package:coinfi/core/theme/colors.dart';
 import 'package:coinfi/core/theme/text_styles.dart';
 import 'package:coinfi/modules/global_widgets/icons/app_icons.dart';
+import 'package:coinfi/modules/main/app_main/state/bottom_nav/app_main_bottom_nav_controller.dart';
+import 'package:coinfi/modules/main/home/ui/home.dart';
+import 'package:coinfi/modules/main/market/ui/market.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
-import '../../home/ui/home.dart';
-import '../../market/ui/market.dart';
-import '../state/controllers/app_main_screen_controller.dart';
-
 class AppMain extends StatelessWidget {
   AppMain({Key? key}) : super(key: key);
 
-  final AppMainScreenController appMainController = Get.find();
+  final AppMainBottomNavController appMainController = Get.find();
 
   List<Widget> _buildScreens() {
     return [Home(), Market()];

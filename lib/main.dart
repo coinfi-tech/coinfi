@@ -1,4 +1,5 @@
 import 'package:coinfi/core/constants/strings.dart';
+import 'package:coinfi/modules/order_placement/order_placement_binding.dart';
 import 'package:coinfi/routes/app_pages.dart';
 import 'package:coinfi/core/theme/app_theme.dart';
 
@@ -6,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get/get_navigation/src/routes/transitions_type.dart';
 
-import 'modules/main/state/bindings/app_main_binding.dart';
+import 'modules/main/app_main_binding.dart';
 
 void main() {
   runApp(const MyApp());

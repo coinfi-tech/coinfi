@@ -70,6 +70,14 @@ class AppShadows {
     ),
   ];
 
+  static List<BoxShadow> bottomNavShadow = [
+    BoxShadow(
+      color: Colors.black.withOpacity(0.1),
+      blurRadius: 20,
+      offset: const Offset(0, -1),
+    ),
+  ];
+
   static List<BoxShadow> imageShadowDefault = [
     BoxShadow(
       color: Colors.black.withOpacity(0.15),
@@ -110,3 +118,4 @@ class AppShadows {
     ),
   ];
 }
+
