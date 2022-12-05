@@ -16,12 +16,18 @@ class AppTextStyles {
       TextStyle(fontSize: 16, height: 20 / 16, fontWeight: FontWeight.w500);
   static const TextStyle h6 =
       TextStyle(fontSize: 12, height: 12 / 12, fontWeight: FontWeight.w500);
+  static const TextStyle appBarHeading =
+      TextStyle(fontSize: 24, height: 28 / 24, fontWeight: FontWeight.w700);
+  static const TextStyle tabHeading =
+      TextStyle(fontSize: 14, height: 18 / 14, fontWeight: FontWeight.w700);
 
   ///TEXT
   static const TextStyle bodyLarge =
       TextStyle(fontSize: 20, height: 24 / 20, fontWeight: FontWeight.w400);
   static const TextStyle bodyRegular =
       TextStyle(fontSize: 16, height: 20 / 16, fontWeight: FontWeight.w400);
+  static const TextStyle body14 =
+      TextStyle(fontSize: 14, height: 18 / 14, fontWeight: FontWeight.w400);
   static const TextStyle bodySmall =
       TextStyle(fontSize: 12, height: 16 / 12, fontWeight: FontWeight.w400);
   static const TextStyle bodySmallBold =

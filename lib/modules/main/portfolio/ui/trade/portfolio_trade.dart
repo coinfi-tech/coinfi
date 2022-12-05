@@ -1,24 +1,36 @@
 import 'package:coinfi/core/theme/colors.dart';
 import 'package:coinfi/core/theme/dimensions.dart';
-import 'package:coinfi/core/theme/text_styles.dart';
 import 'package:coinfi/modules/global_widgets/divider/divider.dart';
 import 'package:coinfi/modules/global_widgets/icons/app_icons.dart';
-import 'package:coinfi/modules/main/orders/ui/widgets/order_tile.dart';
+import 'package:coinfi/modules/main/portfolio/ui/widgets/portfolio_instrument_tile.dart';
+import 'package:coinfi/modules/main/portfolio/ui/widgets/profit_loss_card.dart';
 import 'package:flutter/material.dart';
 
-class Orders extends StatelessWidget {
-  const Orders({Key? key}) : super(key: key);
+class PortfolioTrade extends StatelessWidget {
+  const PortfolioTrade({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: appBar(),
-      body: Column(
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: Dimensions.verticalPadding),
+      child: Column(
         children: [
           Padding(
+            padding:
+                EdgeInsets.symmetric(horizontal: Dimensions.horizontalPadding),
+            child: Row(
+              children: [
+                Expanded(
+                  child: ProfitLossCard(
+                    profit: 125783.67,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Padding(
             padding: EdgeInsets.symmetric(
-                horizontal: Dimensions.horizontalPadding,
-                vertical: Dimensions.verticalPadding),
+                horizontal: Dimensions.horizontalPadding, vertical: 16),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -36,25 +48,13 @@ class Orders extends StatelessWidget {
             ),
           ),
           AppDivider.uiDividerGray_30,
-          OrderTile(),
+          PortfolioInstrumentTile(),
           AppDivider.uiDividerGray_30,
-          OrderTile(),
+          PortfolioInstrumentTile(),
           AppDivider.uiDividerGray_30,
-          OrderTile(),
+          PortfolioInstrumentTile(),
           AppDivider.uiDividerGray_30,
         ],
-      ),
-    );
-  }
-
-  AppBar appBar() {
-    return AppBar(
-      elevation: 0,
-      toolbarHeight: 60,
-      backgroundColor: AppColors.uiGray_20,
-      title: Text(
-        "Orders",
-        style: AppTextStyles.appBarHeading.copyWith(color: AppColors.uiGray_80),
       ),
     );
   }

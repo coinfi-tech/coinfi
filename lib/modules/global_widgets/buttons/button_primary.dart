@@ -19,7 +19,7 @@ class ButtonPrimary extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       style: ButtonStyle(
-        minimumSize: MaterialStateProperty.all<Size>(Size(200, 64)),
+        minimumSize: MaterialStateProperty.all<Size>(Size(128, 64)),
         padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
             const EdgeInsets.all(14)),
         backgroundColor: MaterialStateProperty.all<Color>(color),

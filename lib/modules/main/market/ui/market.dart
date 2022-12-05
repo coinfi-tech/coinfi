@@ -15,11 +15,13 @@ class Market extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: 64,
         title: Text(
           "Markets",
-          style: AppTextStyles.h4.copyWith(color: AppColors.textGray_80),
+          style: AppTextStyles.appBarHeading
+              .copyWith(color: AppColors.textGray_80),
         ),
-        backgroundColor: AppColors.primaryColor,
+        backgroundColor: AppColors.uiGray_20,
         elevation: 0,
       ),
       body: SafeArea(

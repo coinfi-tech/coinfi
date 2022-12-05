@@ -38,7 +38,7 @@ class MarketStatsTable extends StatelessWidget {
       alignment: Alignment.centerLeft,
       child: Text(
         value,
-        style: AppTextStyles.bodyRegular.copyWith(color: AppColors.textGray_60),
+        style: AppTextStyles.body14.copyWith(color: AppColors.textGray_60),
       ),
     );
   }
@@ -49,8 +49,7 @@ class MarketStatsTable extends StatelessWidget {
       alignment: Alignment.centerRight,
       child: Text(
         value,
-        style:
-            AppTextStyles.bodyRegular.copyWith(color: AppColors.textGray_100),
+        style: AppTextStyles.body14.copyWith(color: AppColors.textGray_80),
       ),
     );
   }

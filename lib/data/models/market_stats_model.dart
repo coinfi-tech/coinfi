@@ -1,3 +1,5 @@
+import 'package:coinfi/core/utils/AppFormatter.dart';
+
 class MarketStatsModel {
   final double volume;
   final double high24h;
@@ -7,9 +9,9 @@ class MarketStatsModel {
 
   List<List<String>> getTableData() {
     return [
-      ["Volume", volume.toStringAsFixed(2)],
-      ["24H High", high24h.toStringAsFixed(2)],
-      ["24H Low", low24h.toStringAsFixed(2)],
+      ["Volume", AppFormatter.formatNumber(volume)],
+      ["24H High", AppFormatter.formatNumber(high24h)],
+      ["24H Low", AppFormatter.formatNumber(low24h)],
       ["Exchange", exchange]
     ];
   }

@@ -1,3 +1,4 @@
+import 'package:coinfi/modules/global_widgets/input/label_primary.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/theme/colors.dart';
@@ -50,10 +51,7 @@ class _InputPrimaryState extends State<InputPrimary> {
                 children: [
                   /// LABEL LEFT
                   if (widget.labelLeft.isNotEmpty)
-                    Text(
-                      widget.labelLeft,
-                      style: AppTextStyles.primaryLabelLarge,
-                    ),
+                    LabelPrimary(label: widget.labelLeft),
 
                   /// LABEL RIGHT
                   if (widget.labelRight.isNotEmpty)
@@ -83,7 +81,7 @@ class _InputPrimaryState extends State<InputPrimary> {
             filled: true,
             fillColor: widget.enabled ? AppColors.uiWhite : AppColors.uiGray_20,
             disabledBorder: disabledBorder(),
-            contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+            contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
             hintText: widget.placeholder,
             hintStyle: AppTextStyles.bodyRegular
                 .copyWith(color: AppColors.textGray_60),

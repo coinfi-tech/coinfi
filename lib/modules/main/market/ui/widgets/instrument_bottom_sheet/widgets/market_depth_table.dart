@@ -2,7 +2,6 @@ import 'package:coinfi/core/theme/colors.dart';
 import 'package:coinfi/core/theme/text_styles.dart';
 import 'package:flutter/material.dart';
 
-
 class MarketDepthTable extends StatelessWidget {
   const MarketDepthTable(
       {Key? key,
@@ -55,7 +54,7 @@ class MarketDepthTable extends StatelessWidget {
       alignment: alignment,
       child: Text(
         columnName,
-        style: AppTextStyles.bodyRegular.copyWith(color: AppColors.textGray_60),
+        style: AppTextStyles.bodySmall.copyWith(color: AppColors.textGray_60),
       ),
     );
   }
@@ -66,7 +65,7 @@ class MarketDepthTable extends StatelessWidget {
       alignment: alignment,
       child: Text(
         value,
-        style: AppTextStyles.bodyRegular.copyWith(color: cellTextColor),
+        style: AppTextStyles.bodySmall.copyWith(color: cellTextColor),
       ),
     );
   }

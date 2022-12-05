@@ -1,6 +1,8 @@
 import 'package:coinfi/core/theme/colors.dart';
 import 'package:coinfi/core/theme/text_styles.dart';
 import 'package:coinfi/modules/global_widgets/input/input_primary.dart';
+import 'package:coinfi/modules/global_widgets/input/label_primary.dart';
+import 'package:coinfi/modules/order_placement/ui/widgets/order_form_label_with_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 
@@ -11,12 +13,14 @@ class ToggleSwitchInput extends StatefulWidget {
     required this.label,
     required this.inputField,
     required this.color,
+    required this.icon,
   }) : super(key: key);
 
   String heading;
   String label;
   Widget inputField;
   Color color;
+  IconData icon;
 
   @override
   State<ToggleSwitchInput> createState() => _ToggleSwitchInputState();
@@ -32,22 +36,15 @@ class _ToggleSwitchInputState extends State<ToggleSwitchInput> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Row(
-              children: [
-                Icon(
-                  Icons.show_chart,
-                  color: widget.color,
-                ),
-                SizedBox(
-                  width: 8,
-                ),
-                Text(
-                  widget.heading,
-                  style: AppTextStyles.primaryLabelLarge,
-                ),
-              ],
-            ),
+            OrderFormLabel(
+                icon: widget.icon, label: widget.heading, color: widget.color),
             FlutterSwitch(
+              width: 35.0 * 1.5,
+              height: 17.5 * 1.5,
+              toggleSize: 12.5 * 1.5,
+              valueFontSize: 8.0 * 1.5,
+              borderRadius: 10.0 * 1.5,
+              padding: 2.0 * 1.5,
               value: toggleState,
               activeColor: widget.color,
               onToggle: (bool status) {
@@ -72,10 +69,7 @@ class _ToggleSwitchInputState extends State<ToggleSwitchInput> {
                 children: [
                   Expanded(
                     flex: 2,
-                    child: Text(
-                      widget.label,
-                      style: AppTextStyles.primaryLabelLarge,
-                    ),
+                    child: LabelPrimary(label: widget.label),
                   ),
                   Expanded(flex: 2, child: widget.inputField),
                 ],

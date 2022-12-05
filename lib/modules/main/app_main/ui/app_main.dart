@@ -4,6 +4,8 @@ import 'package:coinfi/modules/global_widgets/icons/app_icons.dart';
 import 'package:coinfi/modules/main/app_main/state/bottom_nav/app_main_bottom_nav_controller.dart';
 import 'package:coinfi/modules/main/home/ui/home.dart';
 import 'package:coinfi/modules/main/market/ui/market.dart';
+import 'package:coinfi/modules/main/orders/ui/orders.dart';
+import 'package:coinfi/modules/main/portfolio/ui/portfolio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -15,31 +17,20 @@ class AppMain extends StatelessWidget {
   final AppMainBottomNavController appMainController = Get.find();
 
   List<Widget> _buildScreens() {
-    return [Home(), Market()];
+    return [
+      Portfolio(),
+      Orders(),
+      Home(),
+      Market(),
+    ];
   }
 
   List<PersistentBottomNavBarItem> _navBarsItems(BuildContext context) {
     return [
-      PersistentBottomNavBarItem(
-        icon: const Icon(
-          AppIcons.home,
-          size: 20,
-        ),
-        activeColorPrimary: AppColors.uiGray_80,
-        inactiveColorPrimary: AppColors.uiGray_40,
-        // title: "Home",
-
-        // textStyle: AppTextStyles.bodySmall
-      ),
-      PersistentBottomNavBarItem(
-        icon: const Icon(
-          AppIcons.market,
-          size: 20,
-        ),
-        activeColorPrimary: AppColors.uiGray_80,
-        inactiveColorPrimary: AppColors.uiGray_40,
-        // title: "Market",
-      ),
+      navBarItem(AppIcons.portfolio, "Portfolio"),
+      navBarItem(AppIcons.orders, "Orders"),
+      navBarItem(AppIcons.home, "Home"),
+      navBarItem(AppIcons.market, "Market"),
     ];
   }
 
@@ -47,7 +38,7 @@ class AppMain extends StatelessWidget {
   Widget build(BuildContext context) {
     return PersistentTabView(
       context,
-      navBarHeight: 80,
+      // navBarHeight: 80,
       // bottomScreenMargin: 100,
       padding: NavBarPadding.only(bottom: 10),
       controller: appMainController.persistentTabController,
@@ -86,8 +77,20 @@ class AppMain extends StatelessWidget {
         curve: Curves.ease,
         duration: Duration(milliseconds: 200),
       ),
-      navBarStyle: NavBarStyle.style3,
+      navBarStyle: NavBarStyle.style6,
       hideNavigationBar: false, // Choose the nav bar style with this property.
     );
+  }
+
+  PersistentBottomNavBarItem navBarItem(IconData iconData, String title) {
+    return PersistentBottomNavBarItem(
+        icon: Icon(
+          iconData,
+          size: 20,
+        ),
+        activeColorPrimary: AppColors.uiGray_80,
+        inactiveColorPrimary: AppColors.uiGray_40,
+        title: title,
+        textStyle: AppTextStyles.bodySmall);
   }
 }

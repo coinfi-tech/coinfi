@@ -46,7 +46,7 @@ class InstrumentTile extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Text(
-                      "${instrument.value}",
+                      instrument.getValueString(),
                       style: AppTextStyles.bodyRegular.copyWith(
                           color: instrument.change >= 0
                               ? AppColors.textGreen
@@ -65,7 +65,7 @@ class InstrumentTile extends StatelessWidget {
             ),
           ),
         ),
-        const Divider(color: AppColors.uiGray_40)
+        const Divider(color: AppColors.uiGray_30)
       ],
     );
   }

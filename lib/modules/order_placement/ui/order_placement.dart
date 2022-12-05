@@ -2,12 +2,16 @@ import 'dart:developer';
 
 import 'package:coinfi/core/theme/colors.dart';
 import 'package:coinfi/core/theme/shadows.dart';
+import 'package:coinfi/data/models/instrument_model.dart';
 import 'package:coinfi/modules/global_widgets/buttons/button_swipe.dart';
 import 'package:coinfi/modules/global_widgets/buttons/toggle_button_primary.dart';
 import 'package:coinfi/modules/global_widgets/divider/divider.dart';
 import 'package:coinfi/modules/global_widgets/input/input_primary.dart';
+import 'package:coinfi/modules/global_widgets/input/label_primary.dart';
+import 'package:coinfi/modules/main/orders/args/order_screen_args.dart';
 import 'package:coinfi/modules/order_placement/state/order_placement/order_placement_controller.dart';
 import 'package:coinfi/modules/order_placement/ui/widgets/leverage_slider.dart';
+import 'package:coinfi/modules/order_placement/ui/widgets/order_form_label_with_icon.dart';
 import 'package:coinfi/modules/order_placement/ui/widgets/toggle_switch_input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
@@ -17,13 +21,17 @@ import '../../../core/theme/dimensions.dart';
 import '../../../core/theme/text_styles.dart';
 
 class OrderPlacement extends StatelessWidget {
-  OrderPlacement({Key? key, required this.isBuy}) : super(key: key);
-  final bool isBuy;
+  OrderPlacement({Key? key}) : super(key: key);
 
   OrderPlacementController orderPlacementController = Get.find();
 
+  late InstrumentModel instrument;
+
   @override
   Widget build(BuildContext context) {
+    OrderPlacementScreenArgs args = Get.arguments as OrderPlacementScreenArgs;
+    instrument = args.instrument;
+
     double sectionVerticalMarginValue = 40;
     SizedBox sectionVerticalMargin =
         SizedBox(height: sectionVerticalMarginValue);
@@ -48,10 +56,15 @@ class OrderPlacement extends StatelessWidget {
                 sectionVerticalMargin,
                 AppDivider.uiDividerGray,
                 sectionVerticalMargin,
-                leverageSection(),
+                GetBuilder<OrderPlacementController>(
+                  builder: (_) => Column(
+                    children: [
+                      if (_.productTypeSelected[1]) leverageSection(),
+                      if (_.productTypeSelected[1]) sectionVerticalMargin,
+                    ],
+                  ),
+                ),
                 stoplossSection(),
-                sectionVerticalMargin,
-                AppDivider.uiDividerGray,
                 sectionVerticalMargin,
                 targetSection(),
                 sectionVerticalMargin,
@@ -67,9 +80,14 @@ class OrderPlacement extends StatelessWidget {
       elevation: 0,
       toolbarHeight: 80,
       backgroundColor: AppColors.uiGray_20,
-      leading: Icon(
-        Icons.arrow_back_ios_new_rounded,
-        color: AppColors.uiGray_80,
+      leading: GestureDetector(
+        onTap: () {
+          Get.back();
+        },
+        child: Icon(
+          Icons.arrow_back_ios_new_rounded,
+          color: AppColors.uiGray_80,
+        ),
       ),
       title: appBarTitle(),
     );
@@ -83,15 +101,18 @@ class OrderPlacement extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "BTC",
+              instrument.instrument,
               style: AppTextStyles.h5.copyWith(color: AppColors.uiGray_80),
             ),
             SizedBox(
               height: 8,
             ),
             Text(
-              "16417",
-              style: AppTextStyles.bodyRegular.copyWith(color: AppColors.blue),
+              instrument.getValueString(),
+              style: AppTextStyles.bodyRegular.copyWith(
+                  color: instrument.change >= 0
+                      ? AppColors.textGreen
+                      : AppColors.textRed),
             ),
           ],
         ),
@@ -138,7 +159,7 @@ class OrderPlacement extends StatelessWidget {
   Widget bottomBar() {
     return Container(
       key: const ValueKey<int>(1),
-      padding: EdgeInsets.symmetric(horizontal: 96, vertical: 16),
+      padding: EdgeInsets.symmetric(horizontal: 64, vertical: 16),
       decoration: BoxDecoration(
         color: AppColors.bgWhite,
         boxShadow: AppShadows.bottomNavShadow,
@@ -223,10 +244,7 @@ class OrderPlacement extends StatelessWidget {
   }
 
   Widget sectionLabel(String label) {
-    return Text(
-      label,
-      style: AppTextStyles.primaryLabelLarge,
-    );
+    return LabelPrimary(label: label);
   }
 
   Widget orderTypeSection() {
@@ -268,6 +286,7 @@ class OrderPlacement extends StatelessWidget {
   Widget stoplossSection() {
     return GetBuilder<OrderPlacementController>(
       builder: (_) => ToggleSwitchInput(
+        icon: Icons.show_chart,
         heading: "Set stoploss",
         label: "Stoploss %",
         color: orderPlacementController.isBuy
@@ -287,6 +306,7 @@ class OrderPlacement extends StatelessWidget {
   Widget targetSection() {
     return GetBuilder<OrderPlacementController>(
       builder: (_) => ToggleSwitchInput(
+        icon: Icons.show_chart,
         heading: "Set target",
         label: "Target %",
         color: orderPlacementController.isBuy
@@ -304,6 +324,18 @@ class OrderPlacement extends StatelessWidget {
   }
 
   Widget leverageSection() {
-    return LeverageSlider();
+    return GetBuilder<OrderPlacementController>(
+        builder: (_) => Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                OrderFormLabel(
+                    label: "Leverage",
+                    color: _.isBuy ? AppColors.blue : AppColors.accentRed,
+                    icon: Icons.show_chart),
+                LeverageSlider(
+                  color: _.isBuy ? AppColors.blue : AppColors.accentRed,
+                ),
+              ],
+            ));
   }
 }

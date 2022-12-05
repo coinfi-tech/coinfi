@@ -1,5 +1,8 @@
 import 'dart:developer';
 
+import 'package:coinfi/data/models/instrument_model.dart';
+import 'package:coinfi/modules/main/orders/args/order_screen_args.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 
 class OrderPlacementController extends GetxController {
@@ -14,6 +17,16 @@ class OrderPlacementController extends GetxController {
 
   List<bool> orderTypeSelected = [true, false];
   List<String> orderTypeList = ["Market", "Limit"];
+
+  @override
+  void onReady() {
+    super.onReady();
+    if (Get.arguments != null) {
+      OrderPlacementScreenArgs args = Get.arguments as OrderPlacementScreenArgs;
+      isBuy = args.isBuy;
+      update();
+    }
+  }
 
   void onToggle(bool status) {
     _isBuy = status;
