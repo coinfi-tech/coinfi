@@ -15,6 +15,7 @@ class Market extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: false,
         toolbarHeight: 64,
         title: Text(
           "Markets",

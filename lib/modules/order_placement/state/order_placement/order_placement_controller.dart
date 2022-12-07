@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:coinfi/data/models/instrument_model.dart';
-import 'package:coinfi/modules/main/orders/args/order_screen_args.dart';
+import 'package:coinfi/modules/order_placement/args/order_screen_args.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 

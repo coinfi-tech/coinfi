@@ -26,6 +26,7 @@ class Portfolio extends StatelessWidget {
 
   AppBar appBar() {
     return AppBar(
+      centerTitle: false,
       elevation: 0,
       toolbarHeight: 64,
       backgroundColor: AppColors.uiGray_20,

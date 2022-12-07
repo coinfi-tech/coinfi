@@ -1,14 +1,24 @@
 import 'package:coinfi/core/theme/colors.dart';
 import 'package:coinfi/core/theme/dimensions.dart';
 import 'package:coinfi/core/theme/text_styles.dart';
+import 'package:coinfi/core/utils/AppFormatter.dart';
+import 'package:coinfi/data/enums/order_type_enum.dart';
+import 'package:coinfi/data/enums/product_type_enum.dart';
+import 'package:coinfi/data/models/order_model.dart';
 import 'package:coinfi/modules/global_widgets/icons/app_icons.dart';
+import 'package:coinfi/modules/global_widgets/pill/pill_secondary.dart';
 import 'package:flutter/material.dart';
 
 class PortfolioInstrumentTile extends StatelessWidget {
-  const PortfolioInstrumentTile({Key? key}) : super(key: key);
+  const PortfolioInstrumentTile({Key? key, required this.order})
+      : super(key: key);
+
+  final OrderModel order;
 
   @override
   Widget build(BuildContext context) {
+    Color buySellColor = order.isBuy ? AppColors.blue : AppColors.accentRed;
+
     return Container(
       padding: EdgeInsets.all(Dimensions.horizontalPadding),
       child: Column(
@@ -17,8 +27,55 @@ class PortfolioInstrumentTile extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              buySellPill(true),
-              timestamp("12:38:46"),
+              Row(
+                children: [
+                  buySellPill(order.isBuy),
+                  SizedBox(
+                    width: 8,
+                  ),
+                  if (order.productType == ProductTypeEnum.trade)
+                    Row(
+                      children: [
+                        leveragePill(5, buySellColor),
+                        SizedBox(
+                          width: 8,
+                        ),
+                      ],
+                    ),
+                  Text(
+                    "Qty",
+                    style: AppTextStyles.bodySmall
+                        .copyWith(color: AppColors.textGray_60),
+                  ),
+                  SizedBox(
+                    width: 4,
+                  ),
+                  Text("${order.filledQuantity}",
+                      style: AppTextStyles.bodySmall),
+                  SizedBox(
+                    width: 8,
+                  ),
+                  Text(
+                    "Avg",
+                    style: AppTextStyles.bodySmall
+                        .copyWith(color: AppColors.textGray_60),
+                  ),
+                  SizedBox(
+                    width: 4,
+                  ),
+                  Text("${AppFormatter.formatCurrency(order.price)}",
+                      style: AppTextStyles.bodySmall),
+                ],
+              ),
+              Text(
+                order.getProfitPercentage() >= 0
+                    ? "+${order.getProfitPercentage().toStringAsFixed(2)} %"
+                    : "${order.getProfitPercentage().toStringAsFixed(2)} %",
+                style: AppTextStyles.bodySmall.copyWith(
+                    color: order.getProfit() >= 0
+                        ? AppColors.green
+                        : AppColors.accentRed),
+              ),
             ],
           ),
           SizedBox(
@@ -28,12 +85,17 @@ class PortfolioInstrumentTile extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "BTC",
+                order.instrument.instrument,
                 style: AppTextStyles.bodyRegular,
               ),
               Text(
-                "12623.23",
-                style: AppTextStyles.bodyRegular,
+                order.getProfit() >= 0
+                    ? "+${AppFormatter.formatCurrencyUSD(order.getProfit())}"
+                    : "${AppFormatter.formatCurrencyUSD(order.getProfit())}",
+                style: AppTextStyles.bodyRegular.copyWith(
+                    color: order.getProfit() >= 0
+                        ? AppColors.green
+                        : AppColors.accentRed),
               ),
             ],
           ),
@@ -46,17 +108,16 @@ class PortfolioInstrumentTile extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    "BINANCE",
+                    "Invested",
                     style: AppTextStyles.bodySmall
                         .copyWith(color: AppColors.textGray_60),
                   ),
                   SizedBox(
-                    width: 8,
+                    width: 4,
                   ),
                   Text(
-                    "LIMIT",
-                    style: AppTextStyles.bodySmall
-                        .copyWith(color: AppColors.textGray_60),
+                    AppFormatter.formatCurrency(order.invested),
+                    style: AppTextStyles.bodySmall,
                   ),
                 ],
               ),
@@ -117,5 +178,9 @@ class PortfolioInstrumentTile extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Widget leveragePill(int leverage, Color color) {
+    return PillSecondary(text: "${leverage.toString()}X", color: color);
   }
 }

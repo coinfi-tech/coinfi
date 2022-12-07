@@ -1,13 +1,20 @@
 import 'package:coinfi/core/theme/colors.dart';
 import 'package:coinfi/core/theme/dimensions.dart';
+import 'package:coinfi/data/models/order_model.dart';
+import 'package:coinfi/data/models/test_data/order_test_data.dart';
 import 'package:coinfi/modules/global_widgets/divider/divider.dart';
 import 'package:coinfi/modules/global_widgets/icons/app_icons.dart';
+import 'package:coinfi/modules/main/portfolio/state/portfolio/portfolio_controller.dart';
 import 'package:coinfi/modules/main/portfolio/ui/widgets/portfolio_instrument_tile.dart';
 import 'package:coinfi/modules/main/portfolio/ui/widgets/profit_loss_card.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class PortfolioTrade extends StatelessWidget {
-  const PortfolioTrade({Key? key}) : super(key: key);
+  PortfolioTrade({Key? key}) : super(key: key);
+
+  PortfolioController portfolioController = Get.find();
+
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +29,7 @@ class PortfolioTrade extends StatelessWidget {
               children: [
                 Expanded(
                   child: ProfitLossCard(
-                    profit: 125783.67,
+                    profit: portfolioController.tradeProfit,
                   ),
                 ),
               ],
@@ -48,12 +55,13 @@ class PortfolioTrade extends StatelessWidget {
             ),
           ),
           AppDivider.uiDividerGray_30,
-          PortfolioInstrumentTile(),
-          AppDivider.uiDividerGray_30,
-          PortfolioInstrumentTile(),
-          AppDivider.uiDividerGray_30,
-          PortfolioInstrumentTile(),
-          AppDivider.uiDividerGray_30,
+          for (OrderModel order in portfolioController.tradeOrderList)
+            Column(
+              children: [
+                PortfolioInstrumentTile(order: order),
+                AppDivider.uiDividerGray_30,
+              ],
+            ),
         ],
       ),
     );

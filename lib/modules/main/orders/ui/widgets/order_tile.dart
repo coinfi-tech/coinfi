@@ -35,7 +35,7 @@ class OrderTile extends StatelessWidget {
                     ),
                   if (order.productType == ProductTypeEnum.invest) investPill(),
                   SizedBox(width: 8),
-                  buyPill(),
+                  order.isBuy ? buyPill() : sellPill(),
                   SizedBox(width: 8),
                   orderQuantityWidget(order.filledQuantity.toInt(),
                       order.totalQuantity.toInt()),
@@ -63,7 +63,7 @@ class OrderTile extends StatelessWidget {
                 style: AppTextStyles.bodyRegular,
               ),
               Text(
-                AppFormatter.formatNumber(order.price),
+                AppFormatter.formatCurrencyUSD(order.price),
                 style: AppTextStyles.bodyRegular,
               ),
             ],
@@ -102,7 +102,7 @@ class OrderTile extends StatelessWidget {
                     width: 4,
                   ),
                   Text(
-                    order.instrument.getValueString(),
+                    AppFormatter.formatCurrency(order.instrument.price),
                     style: AppTextStyles.bodySmall
                         .copyWith(color: AppColors.textGray_60),
                   ),

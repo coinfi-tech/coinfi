@@ -6,7 +6,7 @@ import 'market_stats_model.dart';
 class InstrumentModel {
   final String instrument;
   final String currency;
-  final double value;
+  final double price;
   final double change;
   final MarketStatsModel marketStats;
   final MarketDepthModel marketDepth;
@@ -14,12 +14,8 @@ class InstrumentModel {
   InstrumentModel(
       {required this.instrument,
       required this.currency,
-      required this.value,
+      required this.price,
       required this.change,
       required this.marketDepth,
       required this.marketStats});
-
-  String getValueString() {
-    return AppFormatter.formatNumber(value);
-  }
 }

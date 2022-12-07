@@ -1,3 +1,4 @@
+import 'package:coinfi/core/utils/AppFormatter.dart';
 import 'package:coinfi/data/models/instrument_model.dart';
 import 'package:coinfi/modules/main/market/ui/widgets/instrument_bottom_sheet/instrument_bottom_sheet.dart';
 import 'package:flutter/material.dart';
@@ -46,7 +47,7 @@ class InstrumentTile extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Text(
-                      instrument.getValueString(),
+                      AppFormatter.formatCurrencyUSD(instrument.price),
                       style: AppTextStyles.bodyRegular.copyWith(
                           color: instrument.change >= 0
                               ? AppColors.textGreen

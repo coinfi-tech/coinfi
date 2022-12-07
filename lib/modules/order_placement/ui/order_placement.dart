@@ -2,13 +2,14 @@ import 'dart:developer';
 
 import 'package:coinfi/core/theme/colors.dart';
 import 'package:coinfi/core/theme/shadows.dart';
+import 'package:coinfi/core/utils/AppFormatter.dart';
 import 'package:coinfi/data/models/instrument_model.dart';
 import 'package:coinfi/modules/global_widgets/buttons/button_swipe.dart';
 import 'package:coinfi/modules/global_widgets/buttons/toggle_button_primary.dart';
 import 'package:coinfi/modules/global_widgets/divider/divider.dart';
 import 'package:coinfi/modules/global_widgets/input/input_primary.dart';
 import 'package:coinfi/modules/global_widgets/input/label_primary.dart';
-import 'package:coinfi/modules/main/orders/args/order_screen_args.dart';
+import 'package:coinfi/modules/order_placement/args/order_screen_args.dart';
 import 'package:coinfi/modules/order_placement/state/order_placement/order_placement_controller.dart';
 import 'package:coinfi/modules/order_placement/ui/widgets/leverage_slider.dart';
 import 'package:coinfi/modules/order_placement/ui/widgets/order_form_label_with_icon.dart';
@@ -108,7 +109,7 @@ class OrderPlacement extends StatelessWidget {
               height: 8,
             ),
             Text(
-              instrument.getValueString(),
+              AppFormatter.formatCurrencyUSD(instrument.price),
               style: AppTextStyles.bodyRegular.copyWith(
                   color: instrument.change >= 0
                       ? AppColors.textGreen

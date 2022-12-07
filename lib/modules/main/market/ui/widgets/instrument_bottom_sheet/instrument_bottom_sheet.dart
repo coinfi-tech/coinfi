@@ -1,5 +1,6 @@
 import 'package:coinfi/core/theme/colors.dart';
 import 'package:coinfi/core/theme/text_styles.dart';
+import 'package:coinfi/core/utils/AppFormatter.dart';
 import 'package:coinfi/data/models/instrument_model.dart';
 import 'package:coinfi/data/models/test_data/market_test_data.dart';
 import 'package:coinfi/modules/global_widgets/buttons/button_primary_A.dart';
@@ -7,7 +8,7 @@ import 'package:coinfi/modules/global_widgets/buttons/button_primary_B.dart';
 import 'package:coinfi/modules/global_widgets/buttons/button_secondary.dart';
 import 'package:coinfi/modules/main/market/ui/widgets/instrument_bottom_sheet/widgets/market_depth.dart';
 import 'package:coinfi/modules/main/market/ui/widgets/instrument_bottom_sheet/widgets/market_stats.dart';
-import 'package:coinfi/modules/main/orders/args/order_screen_args.dart';
+import 'package:coinfi/modules/order_placement/args/order_screen_args.dart';
 import 'package:coinfi/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -68,7 +69,7 @@ class InstrumentBottomSheetLayout extends StatelessWidget {
           Row(
             children: [
               Text(
-                instrument.getValueString(),
+                AppFormatter.formatCurrencyUSD(instrument.price),
                 style: AppTextStyles.bodyRegular.copyWith(
                     color: instrument.change >= 0
                         ? AppColors.textGreen
