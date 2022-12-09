@@ -143,7 +143,7 @@ class _InputPrimaryState extends State<InputPrimary> {
     return OutlineInputBorder(
       borderRadius: BorderRadius.circular(borderRadius),
       borderSide: BorderSide(
-        color: AppColors.blue,
+        color: AppColors.buyColor,
         width: borderWidth,
       ),
     );

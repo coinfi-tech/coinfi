@@ -58,10 +58,10 @@ class Orders extends StatelessWidget {
       centerTitle: false,
       elevation: 0,
       toolbarHeight: 60,
-      backgroundColor: AppColors.uiGray_20,
+      backgroundColor: AppColors.appBarBackgroundColor,
       title: Text(
         "Orders",
-        style: AppTextStyles.appBarHeading.copyWith(color: AppColors.uiGray_80),
+        style: AppTextStyles.appBarHeading.copyWith(color: AppColors.textWhite),
       ),
     );
   }

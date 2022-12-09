@@ -75,7 +75,7 @@ class InputOtherA extends StatelessWidget {
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(borderRadius),
             borderSide: BorderSide(
-              color: AppColors.blue,
+              color: AppColors.buyColor,
               width: borderWidth,
             ),
           ),

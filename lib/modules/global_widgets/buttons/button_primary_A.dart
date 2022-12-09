@@ -15,6 +15,6 @@ class ButtonPrimaryA extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ButtonPrimary(text: text, onClick: onClick, color: AppColors.blue);
+    return ButtonPrimary(text: text, onClick: onClick, color: AppColors.green);
   }
 }

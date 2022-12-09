@@ -27,7 +27,6 @@ class OrderTile extends StatelessWidget {
             children: [
               Row(
                 children: [
-
                   order.isBuy ? buyPill() : sellPill(),
                   SizedBox(width: 8),
                   if (order.productType == ProductTypeEnum.trade)
@@ -117,11 +116,11 @@ class OrderTile extends StatelessWidget {
   }
 
   Widget buyPill() {
-    return PillPrimary(text: "BUY", color: AppColors.blue);
+    return PillPrimary(text: "BUY", color: AppColors.buyColor);
   }
 
   Widget sellPill() {
-    return PillPrimary(text: "SELL", color: AppColors.accentRed);
+    return PillPrimary(text: "SELL", color: AppColors.sellColor);
   }
 
   Widget investPill() {
@@ -142,7 +141,7 @@ class OrderTile extends StatelessWidget {
   }
 
   Widget partiallyFilledOrderStatusPill() {
-    return orderStatusPill("PARTIAL");
+    return orderStatusPill("PARTIALLY FILLED");
   }
 
   Widget timestamp(String time) {
@@ -175,7 +174,7 @@ class OrderTile extends StatelessWidget {
           "${filledQuantity.toString()} / ${totalQuantity.toString()}",
           // style: AppTextStyles.bodySmall.copyWith(
           //     color:
-          //         totalQuantity >= 0 ? AppColors.green : AppColors.accentRed),
+          //         totalQuantity >= 0 ? AppColors.green : AppColors.sellColor),
           style: AppTextStyles.bodySmall.copyWith(color: AppColors.textGray_60),
         ),
         SizedBox(

@@ -17,7 +17,7 @@ class PortfolioInstrumentTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color buySellColor = order.isBuy ? AppColors.blue : AppColors.accentRed;
+    Color buySellColor = order.isBuy ? AppColors.buyColor : AppColors.sellColor;
 
     return Container(
       padding: EdgeInsets.all(Dimensions.horizontalPadding),
@@ -73,8 +73,8 @@ class PortfolioInstrumentTile extends StatelessWidget {
                     : "${order.getProfitPercentage().toStringAsFixed(2)} %",
                 style: AppTextStyles.bodySmall.copyWith(
                     color: order.getProfit() >= 0
-                        ? AppColors.green
-                        : AppColors.accentRed),
+                        ? AppColors.buyColor
+                        : AppColors.sellColor),
               ),
             ],
           ),
@@ -94,8 +94,8 @@ class PortfolioInstrumentTile extends StatelessWidget {
                     : "${AppFormatter.formatCurrencyUSD(order.getProfit())}",
                 style: AppTextStyles.bodyRegular.copyWith(
                     color: order.getProfit() >= 0
-                        ? AppColors.green
-                        : AppColors.accentRed),
+                        ? AppColors.buyColor
+                        : AppColors.sellColor),
               ),
             ],
           ),
@@ -148,11 +148,13 @@ class PortfolioInstrumentTile extends StatelessWidget {
   Widget buySellPill(bool isBuy) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-      color: isBuy ? AppColors.blue_20 : AppColors.accentRed.withOpacity(0.2),
+      color: isBuy
+          ? AppColors.buyColor.withOpacity(0.2)
+          : AppColors.sellColor.withOpacity(0.2),
       child: Text(
         isBuy ? "BUY" : "SELL",
         style: AppTextStyles.pillSmall
-            .copyWith(color: isBuy ? AppColors.blue : AppColors.accentRed),
+            .copyWith(color: isBuy ? AppColors.buyColor : AppColors.sellColor),
       ),
     );
   }

@@ -29,16 +29,17 @@ class Portfolio extends StatelessWidget {
       centerTitle: false,
       elevation: 0,
       toolbarHeight: 64,
-      backgroundColor: AppColors.uiGray_20,
+      backgroundColor: AppColors.appBarBackgroundColor,
       title: Text(
         "Portfolio",
-        style: AppTextStyles.appBarHeading.copyWith(color: AppColors.uiGray_80),
+        style: AppTextStyles.appBarHeading.copyWith(color: AppColors.textWhite),
       ),
       bottom: TabBar(
         labelPadding: EdgeInsets.all(16),
-        labelColor: AppColors.blue,
-        indicatorColor: AppColors.blue,
-        unselectedLabelColor: AppColors.uiGray_80,
+        labelColor: AppColors.textWhite,
+        indicatorColor: AppColors.uiWhite,
+        indicatorPadding: EdgeInsets.symmetric(horizontal: 90, vertical: 8),
+        unselectedLabelColor: AppColors.uiGray_40,
         tabs: [tab("Invest"), tab("Trade")],
       ),
     );

@@ -63,7 +63,7 @@ Widget bidTable(List<List<String>> bidData) {
       child: MarketDepthTable(
     columnNames: colNames,
     data: bidData,
-    cellTextColor: AppColors.blue,
+    cellTextColor: AppColors.buyColor,
   ));
 }
 
@@ -73,6 +73,6 @@ Widget askTable(List<List<String>> askData) {
       child: MarketDepthTable(
     columnNames: colNames,
     data: askData,
-    cellTextColor: AppColors.accentRed,
+    cellTextColor: AppColors.sellColor,
   ));
 }

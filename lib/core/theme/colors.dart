@@ -8,14 +8,20 @@ class AppColors {
   static const primaryColor_20 = Color(0xFFFFF9CC);
 
   /// SECONDARY
-  static const blue = Color(0xFF5FA1D5);
+  static const blue = Color(0xFF4184f3);
+  // Color(0xFF5FA1D5)
+  // #4184f3
   static const blue_20 = Color(0xFFECF6FF);
-  static const green = Color(0xFF51B960);
+  static const green = Color(0xFF0eb776);
+  // #0eb776
+  // Color(0xFF51B960);
   static const green_20 = Color(0xFFEAF8EC);
 
   /// ACCENTS
   static const accentOrange = Color(0xFFFDBC1F);
-  static const accentRed = Color(0xFFFE8668);
+  static const accentRed = Color(0xFFff5722);
+  // #f6465d
+  // Color(0xFFFE8668);
   static const accentTeal = Color(0xFF30D6B0);
   static const accentIndigo = Color(0xFF4269F2);
 
@@ -42,4 +48,11 @@ class AppColors {
   static const textBlue = Color(0xFF5FA1D5);
   static const textGreen = Color(0xFF51B960);
   static const textRed = Color(0xFFFE8668);
+
+  static const appBarBackgroundColor = Color(0xFF121212);
+
+  static const buyColor = Color(0xFF0eb776);
+  static const sellColor = Color(0xFFff5722);
+  static const profit = Color(0xFF0eb776);
+  static const loss = Color(0xFFff5722);
 }

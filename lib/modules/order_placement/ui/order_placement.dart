@@ -33,7 +33,7 @@ class OrderPlacement extends StatelessWidget {
     OrderPlacementScreenArgs args = Get.arguments as OrderPlacementScreenArgs;
     instrument = args.instrument;
 
-    double sectionVerticalMarginValue = 40;
+    double sectionVerticalMarginValue = 32;
     SizedBox sectionVerticalMargin =
         SizedBox(height: sectionVerticalMarginValue);
 
@@ -122,8 +122,8 @@ class OrderPlacement extends StatelessWidget {
             children: [
               Text(
                 "Buy",
-                style: AppTextStyles.bodyRegular
-                    .copyWith(color: AppColors.textGray_60),
+                style:
+                    AppTextStyles.body14.copyWith(color: AppColors.textGray_60),
               ),
               SizedBox(
                 width: 8,
@@ -135,8 +135,8 @@ class OrderPlacement extends StatelessWidget {
                 valueFontSize: 8.0,
                 borderRadius: 10.0,
                 padding: 2.0,
-                activeColor: AppColors.accentRed,
-                inactiveColor: AppColors.blue,
+                activeColor: AppColors.sellColor,
+                inactiveColor: AppColors.buyColor,
                 value: !(orderPlacementController.isBuy),
                 onToggle: (bool status) {
                   controller.onToggle(!status);
@@ -168,7 +168,7 @@ class OrderPlacement extends StatelessWidget {
       child: GetBuilder<OrderPlacementController>(
         builder: (_) => ButtonSwipe(
           text: _.isBuy ? 'SWIPE TO BUY' : 'SWIPE TO SELL',
-          color: _.isBuy ? AppColors.blue : AppColors.accentRed,
+          color: _.isBuy ? AppColors.buyColor : AppColors.sellColor,
         ),
       ),
     );
@@ -188,7 +188,7 @@ class OrderPlacement extends StatelessWidget {
             flex: 1,
             child: InputPrimary(
               labelLeft: 'Quantity',
-              labelRight: 'BTC',
+              labelRight: instrument.instrument,
               inputType: TextInputType.number,
             ),
           ),
@@ -230,7 +230,7 @@ class OrderPlacement extends StatelessWidget {
                     text: _.productTypeList[index],
                     isSelected: _.productTypeSelected[index],
                     selectionColor:
-                        _.isBuy ? AppColors.blue : AppColors.accentRed,
+                        _.isBuy ? AppColors.buyColor : AppColors.sellColor,
                     onPressed: () {
                       _.onProductTypePressed(index);
                     },
@@ -270,7 +270,7 @@ class OrderPlacement extends StatelessWidget {
                     text: _.orderTypeList[index],
                     isSelected: _.orderTypeSelected[index],
                     selectionColor:
-                        _.isBuy ? AppColors.blue : AppColors.accentRed,
+                        _.isBuy ? AppColors.buyColor : AppColors.sellColor,
                     onPressed: () {
                       _.onOrderTypePressed(index);
                     },
@@ -291,8 +291,8 @@ class OrderPlacement extends StatelessWidget {
         heading: "Set stoploss",
         label: "Stoploss %",
         color: orderPlacementController.isBuy
-            ? AppColors.blue
-            : AppColors.accentRed,
+            ? AppColors.buyColor
+            : AppColors.sellColor,
         inputField: InputPrimary(
           inputType: TextInputType.number,
           suffix: Icon(
@@ -311,8 +311,8 @@ class OrderPlacement extends StatelessWidget {
         heading: "Set target",
         label: "Target %",
         color: orderPlacementController.isBuy
-            ? AppColors.blue
-            : AppColors.accentRed,
+            ? AppColors.buyColor
+            : AppColors.sellColor,
         inputField: const InputPrimary(
           inputType: TextInputType.number,
           suffix: Icon(
@@ -331,10 +331,10 @@ class OrderPlacement extends StatelessWidget {
               children: [
                 OrderFormLabel(
                     label: "Leverage",
-                    color: _.isBuy ? AppColors.blue : AppColors.accentRed,
+                    color: _.isBuy ? AppColors.buyColor : AppColors.sellColor,
                     icon: Icons.show_chart),
                 LeverageSlider(
-                  color: _.isBuy ? AppColors.blue : AppColors.accentRed,
+                  color: _.isBuy ? AppColors.buyColor : AppColors.sellColor,
                 ),
               ],
             ));

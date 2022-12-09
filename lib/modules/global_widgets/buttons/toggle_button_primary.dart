@@ -22,7 +22,7 @@ class ToggleButtonPrimary extends StatelessWidget {
       onTap: onPressed,
       child: Container(
         alignment: Alignment.center,
-        padding: EdgeInsets.symmetric(vertical: 12, horizontal: 24),
+        padding: EdgeInsets.symmetric(vertical: 8, horizontal: 24),
         decoration: BoxDecoration(
           border: Border.all(
               color: isSelected ? selectionColor : AppColors.uiGray_40),
