@@ -25,22 +25,33 @@ class InstrumentTile extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      instrument.instrument,
-                      style: AppTextStyles.bodyRegular
-                          .copyWith(color: AppColors.textGray_80),
+                    Row(
+                      children: [
+                        Text(
+                          instrument.instrument,
+                          style: AppTextStyles.bodyRegular
+                              .copyWith(color: AppColors.textGray_80),
+                        ),
+                        // Text(
+                        //   " • ",
+                        //   style: AppTextStyles.bodyRegular
+                        //       .copyWith(color: AppColors.textGray_60),
+                        // ),
+                        // Text(
+                        //   instrument.currency,
+                        //   style: AppTextStyles.bodyRegular,
+                        // ),
+                      ],
                     ),
-                    // Text(
-                    //   " • ",
-                    //   style: AppTextStyles.bodyRegular
-                    //       .copyWith(color: AppColors.textGray_60),
-                    // ),
-                    // Text(
-                    //   instrument.currency,
-                    //   style: AppTextStyles.bodyRegular,
-                    // ),
+                    SizedBox(height: 8,),
+                    Text(
+                      "BINANCE",
+                      style: AppTextStyles.bodySmall
+                          .copyWith(color: AppColors.textGray_60),
+                    ),
                   ],
                 ),
                 Column(

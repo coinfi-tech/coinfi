@@ -27,6 +27,9 @@ class OrderTile extends StatelessWidget {
             children: [
               Row(
                 children: [
+
+                  order.isBuy ? buyPill() : sellPill(),
+                  SizedBox(width: 8),
                   if (order.productType == ProductTypeEnum.trade)
                     Row(
                       children: [
@@ -34,8 +37,6 @@ class OrderTile extends StatelessWidget {
                       ],
                     ),
                   if (order.productType == ProductTypeEnum.invest) investPill(),
-                  SizedBox(width: 8),
-                  order.isBuy ? buyPill() : sellPill(),
                   SizedBox(width: 8),
                   orderQuantityWidget(order.filledQuantity.toInt(),
                       order.totalQuantity.toInt()),
@@ -124,12 +125,12 @@ class OrderTile extends StatelessWidget {
   }
 
   Widget investPill() {
-    return PillPrimary(text: "INVEST", color: Colors.green);
+    return PillSecondary(text: "INVEST", color: AppColors.uiGray_60);
   }
 
   Widget tradePill(int leverage) {
-    return PillPrimary(
-        text: "TRADE ${leverage}x", color: AppColors.accentOrange);
+    return PillSecondary(
+        text: "TRADE ${leverage}x", color: AppColors.uiGray_60);
   }
 
   Widget orderStatusPill(String status) {
