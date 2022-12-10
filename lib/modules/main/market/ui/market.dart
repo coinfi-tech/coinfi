@@ -31,55 +31,57 @@ class Market extends StatelessWidget {
         elevation: 0,
       ),
       body: SafeArea(
-        child: Column(
-          children: [
-            Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: Dimensions.horizontalPadding,
-                  vertical: Dimensions.verticalPadding),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Icon(
-                    AppIcons.search,
-                    color: AppColors.blue,
-                    size: 20,
-                  ),
-                  Icon(
-                    AppIcons.filter,
-                    color: AppColors.blue,
-                    size: 20,
-                  ),
-                ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal: Dimensions.horizontalPadding,
+                    vertical: Dimensions.verticalPadding),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Icon(
+                      AppIcons.search,
+                      color: AppColors.blue,
+                      size: 20,
+                    ),
+                    Icon(
+                      AppIcons.filter,
+                      color: AppColors.blue,
+                      size: 20,
+                    ),
+                  ],
+                ),
               ),
-            ),
-            AppDivider.uiDividerGray_30,
-            Obx(
-              () => Column(
-                children: marketDataController.instrumentMap.values
-                    .map(
-                      (instrument) => GestureDetector(
-                        behavior: HitTestBehavior.opaque,
-                        onTap: () {
-                          showInstrumentBottomSheet(context, instrument);
-                        },
-                        child: InstrumentTile(instrument: instrument.value),
-                      ),
-                    )
-                    .toList(),
-                // children: [
-                //   for (var instrument
-                //       in marketDataController.instrumentMap.entries)
-                //     GestureDetector(
-                //         behavior: HitTestBehavior.opaque,
-                //         onTap: () {
-                //           showInstrumentBottomSheet(context, instrument);
-                //         },
-                //         child: InstrumentTile(instrument: instrument.value)),
-                // ],
+              AppDivider.uiDividerGray_30,
+              Obx(
+                () => Column(
+                  children: marketDataController.instrumentMap.values
+                      .map(
+                        (instrument) => GestureDetector(
+                          behavior: HitTestBehavior.opaque,
+                          onTap: () {
+                            showInstrumentBottomSheet(context, instrument);
+                          },
+                          child: InstrumentTile(instrument: instrument.value),
+                        ),
+                      )
+                      .toList(),
+                  // children: [
+                  //   for (var instrument
+                  //       in marketDataController.instrumentMap.entries)
+                  //     GestureDetector(
+                  //         behavior: HitTestBehavior.opaque,
+                  //         onTap: () {
+                  //           showInstrumentBottomSheet(context, instrument);
+                  //         },
+                  //         child: InstrumentTile(instrument: instrument.value)),
+                  // ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

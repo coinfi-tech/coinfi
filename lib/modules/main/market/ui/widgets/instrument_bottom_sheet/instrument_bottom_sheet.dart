@@ -8,7 +8,7 @@ import 'package:coinfi/modules/global_widgets/buttons/button_primary_B.dart';
 import 'package:coinfi/modules/global_widgets/buttons/button_secondary.dart';
 import 'package:coinfi/modules/main/market/ui/widgets/instrument_bottom_sheet/widgets/market_depth.dart';
 import 'package:coinfi/modules/main/market/ui/widgets/instrument_bottom_sheet/widgets/market_stats.dart';
-import 'package:coinfi/modules/order_placement/args/order_screen_args.dart';
+import 'package:coinfi/modules/order_placement/args/order_placement_screen_args.dart';
 import 'package:coinfi/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

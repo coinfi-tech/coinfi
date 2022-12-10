@@ -25,12 +25,12 @@ class ToggleButtonPrimary extends StatelessWidget {
         padding: EdgeInsets.symmetric(vertical: 8, horizontal: 24),
         decoration: BoxDecoration(
           border: Border.all(
-              color: isSelected ? selectionColor : AppColors.uiGray_40),
-          borderRadius: BorderRadius.circular(4),
+              color: isSelected ? selectionColor : AppColors.uiGray_30),
+          borderRadius: BorderRadius.circular(2),
         ),
         child: Text(
           text,
-          style: AppTextStyles.bodyRegular.copyWith(
+          style: AppTextStyles.body14.copyWith(
               color: isSelected ? selectionColor : AppColors.uiGray_80),
         ),
       ),

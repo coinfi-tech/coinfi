@@ -9,17 +9,17 @@ class OrderTestData {
       instrument: "BTC",
       productType: ProductTypeEnum.invest,
       orderType: OrderTypeEnum.market,
-      totalQuantity: 100,
-      filledQuantity: 50,
-      price: 12623.23);
+      totalQuantity: 0.5,
+      filledQuantity: 0.25,
+      price: 1200000.00);
   static OrderModel order2 = OrderModel(
-      isBuy: false,
-      instrument: "BTC",
+      isBuy: true,
+      instrument: "ETH",
       productType: ProductTypeEnum.invest,
       orderType: OrderTypeEnum.limit,
-      totalQuantity: 80,
-      filledQuantity: 40,
-      price: 12600.00);
+      totalQuantity: 0.4,
+      filledQuantity: 0.2,
+      price: 110000.00);
   static OrderModel order3 = OrderModel(
       isBuy: true,
       instrument: "SOL",
@@ -28,7 +28,7 @@ class OrderTestData {
       orderType: OrderTypeEnum.market,
       totalQuantity: 30,
       filledQuantity: 25,
-      price: 15.65);
+      price: 1000.00);
   static OrderModel order4 = OrderModel(
       isBuy: false,
       instrument: "SOL",
@@ -37,5 +37,5 @@ class OrderTestData {
       orderType: OrderTypeEnum.limit,
       totalQuantity: 70,
       filledQuantity: 0,
-      price: 13.00);
+      price: 1350.00);
 }

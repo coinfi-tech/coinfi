@@ -34,9 +34,9 @@ class AppTextStyles {
       TextStyle(fontSize: 12, height: 16 / 12, fontWeight: FontWeight.w700);
 
   static const TextStyle primaryLabelLarge = TextStyle(
-      fontSize: 16,
-      height: 16 / 16,
-      fontWeight: FontWeight.w900,
+      fontSize: 14,
+      height: 14 / 14,
+      fontWeight: FontWeight.w700,
       color: AppColors.textGray_80);
   static const TextStyle primaryLabel =
       TextStyle(fontSize: 12, height: 12 / 12, fontWeight: FontWeight.w600);

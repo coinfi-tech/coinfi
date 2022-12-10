@@ -1,3 +1,4 @@
+import 'package:coinfi/core/theme/dimensions.dart';
 import 'package:coinfi/modules/global_widgets/input/label_primary.dart';
 import 'package:flutter/material.dart';
 
@@ -16,12 +17,16 @@ class InputPrimary extends StatefulWidget {
       this.validator,
       this.textEditingController,
       this.enabled = true,
+      this.initialValue,
+      required this.focusedColor,
+      this.onChanged,
       this.suffix})
       : super(key: key);
 
   final String labelRight;
   final String labelLeft;
   final String? placeholder;
+  final String? initialValue;
   final String fieldMessage;
   final TextInputType inputType;
   final bool isObscureText;
@@ -29,6 +34,8 @@ class InputPrimary extends StatefulWidget {
   final TextEditingController? textEditingController;
   final bool enabled;
   final Widget? suffix;
+  final Color focusedColor;
+  final Function(String)? onChanged;
 
   @override
   State<InputPrimary> createState() => _InputPrimaryState();
@@ -63,25 +70,27 @@ class _InputPrimaryState extends State<InputPrimary> {
                 ],
               ),
               SizedBox(
-                height: 24,
+                height: Dimensions.horizontalPadding,
               ),
             ],
           ),
 
         /// TEXT FIELD
         TextFormField(
+          onChanged: widget.onChanged,
+          initialValue: widget.initialValue,
           enabled: widget.enabled,
           validator: widget.validator,
           controller: widget.textEditingController,
           obscureText: widget.isObscureText,
           textAlignVertical: TextAlignVertical.center,
           keyboardType: widget.inputType,
-          style: AppTextStyles.h4.copyWith(fontWeight: FontWeight.w400),
+          style: AppTextStyles.h5.copyWith(fontWeight: FontWeight.w400),
           decoration: InputDecoration(
             filled: true,
-            fillColor: widget.enabled ? AppColors.uiWhite : AppColors.uiGray_20,
+            fillColor: widget.enabled ? AppColors.uiWhite : AppColors.uiGray_30,
             disabledBorder: disabledBorder(),
-            contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+            contentPadding: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
             hintText: widget.placeholder,
             hintStyle: AppTextStyles.bodyRegular
                 .copyWith(color: AppColors.textGray_60),
@@ -133,7 +142,7 @@ class _InputPrimaryState extends State<InputPrimary> {
     return OutlineInputBorder(
       borderRadius: BorderRadius.circular(borderRadius),
       borderSide: BorderSide(
-        color: AppColors.uiGray_40,
+        color: AppColors.uiGray_30,
         width: borderWidth,
       ),
     );
@@ -143,7 +152,7 @@ class _InputPrimaryState extends State<InputPrimary> {
     return OutlineInputBorder(
       borderRadius: BorderRadius.circular(borderRadius),
       borderSide: BorderSide(
-        color: AppColors.buyColor,
+        color: widget.focusedColor,
         width: borderWidth,
       ),
     );

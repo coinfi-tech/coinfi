@@ -9,7 +9,8 @@ import 'package:coinfi/modules/global_widgets/buttons/toggle_button_primary.dart
 import 'package:coinfi/modules/global_widgets/divider/divider.dart';
 import 'package:coinfi/modules/global_widgets/input/input_primary.dart';
 import 'package:coinfi/modules/global_widgets/input/label_primary.dart';
-import 'package:coinfi/modules/order_placement/args/order_screen_args.dart';
+import 'package:coinfi/modules/main/market/state/market_data/market_data_controller.dart';
+import 'package:coinfi/modules/order_placement/args/order_placement_screen_args.dart';
 import 'package:coinfi/modules/order_placement/state/order_placement/order_placement_controller.dart';
 import 'package:coinfi/modules/order_placement/ui/widgets/leverage_slider.dart';
 import 'package:coinfi/modules/order_placement/ui/widgets/order_form_label_with_icon.dart';
@@ -25,22 +26,26 @@ class OrderPlacement extends StatelessWidget {
   OrderPlacement({Key? key}) : super(key: key);
 
   OrderPlacementController orderPlacementController = Get.find();
-
-  late InstrumentModel instrument;
+  MarketDataController marketDataController = Get.find();
 
   @override
   Widget build(BuildContext context) {
-    OrderPlacementScreenArgs args = Get.arguments as OrderPlacementScreenArgs;
-    instrument = args.instrument;
-
-    double sectionVerticalMarginValue = 32;
+    double sectionVerticalMarginValue = 16;
     SizedBox sectionVerticalMargin =
         SizedBox(height: sectionVerticalMarginValue);
 
-    return Scaffold(
+    return GestureDetector(
+      onTap: () {
+        FocusScopeNode currentFocus = FocusScope.of(context);
+        if (!currentFocus.hasPrimaryFocus) {
+          currentFocus.unfocus();
+        }
+      },
+      child: Scaffold(
         backgroundColor: AppColors.bgWhite,
         appBar: appBar(),
         body: SingleChildScrollView(
+          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
           child: Container(
             padding:
                 EdgeInsets.symmetric(horizontal: Dimensions.horizontalPadding),
@@ -48,6 +53,7 @@ class OrderPlacement extends StatelessWidget {
               children: [
                 sectionVerticalMargin,
                 quantityAndPriceSection(),
+                sectionVerticalMargin,
                 sectionVerticalMargin,
                 productSection(),
                 sectionVerticalMargin,
@@ -67,13 +73,19 @@ class OrderPlacement extends StatelessWidget {
                 ),
                 stoplossSection(),
                 sectionVerticalMargin,
+                sectionVerticalMargin,
                 targetSection(),
                 sectionVerticalMargin,
               ],
             ),
           ),
         ),
-        bottomNavigationBar: bottomBar());
+        bottomNavigationBar: Padding(
+          padding: MediaQuery.of(context).viewInsets,
+          child: bottomBar(),
+        ),
+      ),
+    );
   }
 
   AppBar appBar() {
@@ -102,19 +114,25 @@ class OrderPlacement extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              instrument.instrument,
+              orderPlacementController.instrument.instrument,
               style: AppTextStyles.h5.copyWith(color: AppColors.uiGray_80),
             ),
             SizedBox(
               height: 8,
             ),
-            Text(
-              AppFormatter.formatCurrencyINR(instrument.price),
-              style: AppTextStyles.bodyRegular.copyWith(
-                  color: instrument.change >= 0
-                      ? AppColors.textGreen
-                      : AppColors.textRed),
-            ),
+            Obx(() {
+              InstrumentModel instrumentStream = marketDataController
+                  .instrumentMap[orderPlacementController.instrument.instrument
+                      .toLowerCase()]!
+                  .value;
+              return Text(
+                AppFormatter.formatCurrencyINR(instrumentStream.price),
+                style: AppTextStyles.bodyRegular.copyWith(
+                    color: instrumentStream.change >= 0
+                        ? AppColors.textGreen
+                        : AppColors.textRed),
+              );
+            }),
           ],
         ),
         GetBuilder<OrderPlacementController>(
@@ -158,25 +176,56 @@ class OrderPlacement extends StatelessWidget {
   }
 
   Widget bottomBar() {
-    return Container(
-      key: const ValueKey<int>(1),
-      padding: EdgeInsets.symmetric(horizontal: 64, vertical: 16),
-      decoration: BoxDecoration(
-        color: AppColors.bgWhite,
-        boxShadow: AppShadows.bottomNavShadow,
-      ),
-      child: GetBuilder<OrderPlacementController>(
-        builder: (_) => ButtonSwipe(
-          text: _.isBuy ? 'SWIPE TO BUY' : 'SWIPE TO SELL',
-          color: _.isBuy ? AppColors.buyColor : AppColors.sellColor,
-        ),
+    return IntrinsicHeight(
+      child: Column(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              color: AppColors.uiGray_20,
+            ),
+            padding: EdgeInsets.all(12),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                GetBuilder<OrderPlacementController>(
+                  builder: (_) {
+                    return Text(
+                      "Total Order Val. ${AppFormatter.formatCurrencyINR(orderPlacementController.totalOrderValue)}",
+                      style: AppTextStyles.bodySmall
+                          .copyWith(color: AppColors.textGray_70),
+                    );
+                  },
+                ),
+                Text(
+                  "Bal. ${AppFormatter.formatCurrencyINR(10000001)}",
+                  style: AppTextStyles.bodySmall
+                      .copyWith(color: AppColors.textGray_70),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            key: const ValueKey<int>(1),
+            padding: EdgeInsets.symmetric(horizontal: 64, vertical: 16),
+            decoration: BoxDecoration(
+              color: AppColors.bgWhite,
+              boxShadow: AppShadows.bottomNavShadow,
+            ),
+            child: GetBuilder<OrderPlacementController>(
+              builder: (_) => ButtonSwipe(
+                text: _.isBuy ? 'SWIPE TO BUY' : 'SWIPE TO SELL',
+                color: _.isBuy ? AppColors.buyColor : AppColors.sellColor,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
 
   Widget quantityAndPriceSection() {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
       decoration: BoxDecoration(
           boxShadow: AppShadows.cardShadowMedium,
           color: AppColors.uiWhite,
@@ -185,22 +234,36 @@ class OrderPlacement extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Expanded(
-            flex: 1,
-            child: InputPrimary(
-              labelLeft: 'Quantity',
-              labelRight: instrument.instrument,
-              inputType: TextInputType.number,
-            ),
-          ),
+              flex: 1,
+              child: GetBuilder<OrderPlacementController>(
+                builder: (_) => InputPrimary(
+                  labelLeft: 'Quantity',
+                  labelRight: orderPlacementController.instrument.instrument,
+                  inputType: TextInputType.number,
+                  focusedColor:
+                      _.isBuy ? AppColors.buyColor : AppColors.sellColor,
+                  textEditingController:
+                      orderPlacementController.quantityInputController,
+                  onChanged: orderPlacementController.onQuantityChanged,
+                ),
+              )),
           SizedBox(
-            width: 32,
+            width: 16,
           ),
           Expanded(
             flex: 1,
-            child: InputPrimary(
-              labelLeft: 'Price',
-              labelRight: 'USDT',
-              inputType: TextInputType.number,
+            child: GetBuilder<OrderPlacementController>(
+              builder: (_) => InputPrimary(
+                labelLeft: 'Price',
+                labelRight: 'INR',
+                inputType: TextInputType.number,
+                focusedColor:
+                    _.isBuy ? AppColors.buyColor : AppColors.sellColor,
+                enabled: _.orderTypeSelected[1],
+                textEditingController:
+                    orderPlacementController.priceInputController,
+                onChanged: orderPlacementController.onPriceChanged,
+              ),
             ),
           ),
         ],
@@ -214,7 +277,7 @@ class OrderPlacement extends StatelessWidget {
       children: [
         sectionLabel("Product"),
         const SizedBox(
-          height: 24,
+          height: 16,
         ),
         GetBuilder<OrderPlacementController>(
           builder: (_) => Row(
@@ -224,8 +287,8 @@ class OrderPlacement extends StatelessWidget {
               (index) => Expanded(
                 child: Padding(
                   padding: EdgeInsets.only(
-                      left: index == 0 ? 0 : 16,
-                      right: index == _.productTypeList.length - 1 ? 0 : 16),
+                      left: index == 0 ? 0 : 8,
+                      right: index == _.productTypeList.length - 1 ? 0 : 8),
                   child: ToggleButtonPrimary(
                     text: _.productTypeList[index],
                     isSelected: _.productTypeSelected[index],
@@ -252,7 +315,7 @@ class OrderPlacement extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        sectionLabel("Type"),
+        sectionLabel("Order type"),
         const SizedBox(
           height: 24,
         ),
@@ -264,8 +327,8 @@ class OrderPlacement extends StatelessWidget {
               (index) => Expanded(
                 child: Padding(
                   padding: EdgeInsets.only(
-                      left: index == 0 ? 0 : 16,
-                      right: index == _.orderTypeList.length - 1 ? 0 : 16),
+                      left: index == 0 ? 0 : 8,
+                      right: index == _.orderTypeList.length - 1 ? 0 : 8),
                   child: ToggleButtonPrimary(
                     text: _.orderTypeList[index],
                     isSelected: _.orderTypeSelected[index],
@@ -293,11 +356,16 @@ class OrderPlacement extends StatelessWidget {
         color: orderPlacementController.isBuy
             ? AppColors.buyColor
             : AppColors.sellColor,
-        inputField: InputPrimary(
-          inputType: TextInputType.number,
-          suffix: Icon(
-            Icons.percent_rounded,
-            color: AppColors.uiGray_80,
+        inputField: GetBuilder<OrderPlacementController>(
+          builder: (_) => InputPrimary(
+            inputType: TextInputType.number,
+            suffix: const Icon(
+              Icons.percent_rounded,
+              color: AppColors.uiGray_80,
+            ),
+            focusedColor: _.isBuy ? AppColors.buyColor : AppColors.sellColor,
+            textEditingController:
+                orderPlacementController.stopLossInputController,
           ),
         ),
       ),
@@ -313,11 +381,16 @@ class OrderPlacement extends StatelessWidget {
         color: orderPlacementController.isBuy
             ? AppColors.buyColor
             : AppColors.sellColor,
-        inputField: const InputPrimary(
-          inputType: TextInputType.number,
-          suffix: Icon(
-            Icons.percent_rounded,
-            color: AppColors.uiGray_80,
+        inputField: GetBuilder<OrderPlacementController>(
+          builder: (_) => InputPrimary(
+            inputType: TextInputType.number,
+            suffix: const Icon(
+              Icons.percent_rounded,
+              color: AppColors.uiGray_80,
+            ),
+            focusedColor: _.isBuy ? AppColors.buyColor : AppColors.sellColor,
+            textEditingController:
+                orderPlacementController.targetInputController,
           ),
         ),
       ),

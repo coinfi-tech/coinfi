@@ -40,11 +40,12 @@ class PortfolioController extends GetxController {
           marketDataController.instrumentMap[order.instrument.toLowerCase()];
       if (instrumentStream != null) {
         positionStream.bindStream(instrumentStream.stream.map((instrument) {
-          double profit =
-              (order.price - instrument.price) * order.filledQuantity;
+          double profit = (instrument.price - order.price) *
+              order.filledQuantity *
+              (order.isBuy ? 1 : -1);
           return PositionModel(
             order: order,
-            profitPercentage: profit / order.invested,
+            profitPercentage: (profit / order.invested) * 100,
             profit: profit,
           );
         }));

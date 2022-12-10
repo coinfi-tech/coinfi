@@ -16,7 +16,20 @@ class MarketDataController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    var symbols = ['btc', 'eth', 'bnb', 'sol']; //'xrp', 'matic', 'doge'];
+    var symbols = [
+      'btc',
+      'eth',
+      'bnb',
+      'sol',
+      'xrp',
+      'doge',
+      'matic',
+      'bch',
+      'ltc',
+      'ada',
+      'ape',
+      'dot',
+    ]; //'xrp', 'matic', 'doge'];
     for (String symbol in symbols) {
       Rx<InstrumentModel> symbolStream = InstrumentModel(
               instrument: "",
