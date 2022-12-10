@@ -69,7 +69,7 @@ class InstrumentBottomSheetLayout extends StatelessWidget {
           Row(
             children: [
               Text(
-                AppFormatter.formatCurrencyUSD(instrument.price),
+                AppFormatter.formatCurrencyINR(instrument.price),
                 style: AppTextStyles.bodyRegular.copyWith(
                     color: instrument.change >= 0
                         ? AppColors.textGreen

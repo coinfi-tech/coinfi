@@ -4,7 +4,7 @@ import 'package:coinfi/data/models/instrument_model.dart';
 
 class OrderModel {
   bool isBuy;
-  InstrumentModel instrument;
+  String instrument;
   ProductTypeEnum productType;
   OrderTypeEnum orderType;
   double totalQuantity;
@@ -28,13 +28,5 @@ class OrderModel {
     // required this.timestamp
   }) {
     invested = (price * filledQuantity) / leverage;
-  }
-
-  double getProfit(){
-    return (price - instrument.price)*filledQuantity;
-  }
-
-  double getProfitPercentage(){
-    return (getProfit()/invested)*100;
   }
 }

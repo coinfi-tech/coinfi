@@ -2,18 +2,20 @@ import 'package:coinfi/core/theme/colors.dart';
 import 'package:coinfi/core/theme/dimensions.dart';
 import 'package:coinfi/core/theme/text_styles.dart';
 import 'package:coinfi/core/utils/AppFormatter.dart';
-import 'package:coinfi/data/enums/order_type_enum.dart';
 import 'package:coinfi/data/enums/product_type_enum.dart';
 import 'package:coinfi/data/models/order_model.dart';
 import 'package:coinfi/modules/global_widgets/icons/app_icons.dart';
 import 'package:coinfi/modules/global_widgets/pill/pill_primary.dart';
 import 'package:coinfi/modules/global_widgets/pill/pill_secondary.dart';
+import 'package:coinfi/modules/main/market/state/market_data/market_data_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class OrderTile extends StatelessWidget {
-  const OrderTile({Key? key, required this.order}) : super(key: key);
-
+  OrderTile({Key? key, required this.order}) : super(key: key);
   final OrderModel order;
+
+  MarketDataController marketDataController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -58,12 +60,21 @@ class OrderTile extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                order.instrument.instrument,
-                style: AppTextStyles.bodyRegular,
+              Row(
+                children: [
+                  Text(
+                    order.instrument,
+                    style: AppTextStyles.bodyRegular,
+                  ),
+                  SizedBox(
+                    width: 6,
+                  ),
+                  if (order.productType == ProductTypeEnum.trade)
+                    leveragePill(order.leverage.toInt()),
+                ],
               ),
               Text(
-                AppFormatter.formatCurrencyUSD(order.price),
+                AppFormatter.formatCurrencyINR(order.price),
                 style: AppTextStyles.bodyRegular,
               ),
             ],
@@ -101,11 +112,23 @@ class OrderTile extends StatelessWidget {
                   SizedBox(
                     width: 4,
                   ),
-                  Text(
-                    AppFormatter.formatCurrency(order.instrument.price),
-                    style: AppTextStyles.bodySmall
-                        .copyWith(color: AppColors.textGray_60),
-                  ),
+                  marketDataController.getPrice(order.instrument) != null
+                      ? Obx(
+                          () {
+                            double ltp = marketDataController
+                                .getPrice(order.instrument)!;
+                            return Text(
+                              AppFormatter.formatCurrency(ltp),
+                              style: AppTextStyles.bodySmall
+                                  .copyWith(color: AppColors.textGray_60),
+                            );
+                          },
+                        )
+                      : Text(
+                          "NaN",
+                          style: AppTextStyles.bodySmall
+                              .copyWith(color: AppColors.textGray_60),
+                        ),
                 ],
               )
             ],
@@ -128,8 +151,14 @@ class OrderTile extends StatelessWidget {
   }
 
   Widget tradePill(int leverage) {
-    return PillSecondary(
-        text: "TRADE ${leverage}x", color: AppColors.uiGray_60);
+    return PillSecondary(text: "TRADE", color: AppColors.uiGray_60);
+  }
+
+  Widget leveragePill(int leverage) {
+    return Text(
+      "x${leverage}",
+      style: AppTextStyles.bodySmall.copyWith(color: AppColors.textGray_60),
+    );
   }
 
   Widget orderStatusPill(String status) {

@@ -55,7 +55,7 @@ class InstrumentTile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Text(
-                    AppFormatter.formatCurrencyUSD(instrument.price),
+                    AppFormatter.formatCurrencyINR(instrument.price),
                     style: AppTextStyles.bodyRegular.copyWith(
                         color: instrument.change >= 0
                             ? AppColors.textGreen
@@ -65,7 +65,7 @@ class InstrumentTile extends StatelessWidget {
                     height: 2,
                   ),
                   Text(
-                    "${instrument.change}%",
+                    "${instrument.change.toStringAsFixed(2)}%",
                     style: AppTextStyles.bodySmall,
                   )
                 ],

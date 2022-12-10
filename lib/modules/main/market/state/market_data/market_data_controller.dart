@@ -1,3 +1,4 @@
+import 'dart:collection';
 import 'dart:developer';
 
 import 'package:coinfi/data/models/instrument_model.dart';
@@ -9,31 +10,13 @@ import 'package:get/get.dart';
 class MarketDataController extends GetxController {
   MarketDataController(this.marketDataRepository);
 
-  List<Rx<InstrumentModel>> _instrumentList = [];
+  final Map<String, Rx<InstrumentModel>> _instrumentMap = HashMap();
   MarketDataRepository marketDataRepository;
-
-  // Rx<InstrumentModel> _instrument = InstrumentModel(
-  //         instrument: "",
-  //         currency: "",
-  //         price: 0.00,
-  //         change: 0.00,
-  //         marketDepth: MarketDepthTestData.marketDepthData,
-  //         marketStats: MarketDepthTestData.marketStatsData)
-  //     .obs;
-  //
-  // Rx<InstrumentModel> get instrument => _instrument;
 
   @override
   void onInit() {
     super.onInit();
-
-    var symbols = ['btc', 'eth', 'bnb']; //'xrp', 'matic', 'doge'];
-
-    // _instrument
-    //     .bindStream(marketDataRepository.getInstrumentTickerStream("btc"));
-    // ever(_instrument,
-    //     (instrument) => {log("Instrument: ${instrument.instrument}")});
-
+    var symbols = ['btc', 'eth', 'bnb', 'sol']; //'xrp', 'matic', 'doge'];
     for (String symbol in symbols) {
       Rx<InstrumentModel> symbolStream = InstrumentModel(
               instrument: "",
@@ -44,11 +27,23 @@ class MarketDataController extends GetxController {
               marketStats: MarketDepthTestData.marketStatsData)
           .obs;
 
-      symbolStream
-          .bindStream(marketDataRepository.getInstrumentTickerStream(symbol));
-      _instrumentList.add(symbolStream);
+      try {
+        symbolStream
+            .bindStream(marketDataRepository.getInstrumentTickerStream(symbol));
+        _instrumentMap[symbol] = symbolStream;
+      } catch (e) {
+        log("ERROR: ${e.toString()}");
+      }
     }
   }
 
-  List<Rx<InstrumentModel>> get instrumentList => _instrumentList;
+  double? getPrice(String instrumentSymbol) {
+    if (_instrumentMap[instrumentSymbol.toLowerCase()] == null) {
+      return null;
+    } else {
+      return _instrumentMap[instrumentSymbol.toLowerCase()]!.value.price;
+    }
+  }
+
+  Map<String, Rx<InstrumentModel>> get instrumentMap => _instrumentMap;
 }

@@ -6,7 +6,7 @@ import 'package:coinfi/data/models/test_data/instrument_test_data.dart';
 class OrderTestData {
   static OrderModel order1 = OrderModel(
       isBuy: true,
-      instrument: InstrumentTestData.btc,
+      instrument: "BTC",
       productType: ProductTypeEnum.invest,
       orderType: OrderTypeEnum.market,
       totalQuantity: 100,
@@ -14,7 +14,7 @@ class OrderTestData {
       price: 12623.23);
   static OrderModel order2 = OrderModel(
       isBuy: false,
-      instrument: InstrumentTestData.btc,
+      instrument: "BTC",
       productType: ProductTypeEnum.invest,
       orderType: OrderTypeEnum.limit,
       totalQuantity: 80,
@@ -22,7 +22,7 @@ class OrderTestData {
       price: 12600.00);
   static OrderModel order3 = OrderModel(
       isBuy: true,
-      instrument: InstrumentTestData.sol,
+      instrument: "SOL",
       productType: ProductTypeEnum.trade,
       leverage: 5,
       orderType: OrderTypeEnum.market,
@@ -31,7 +31,7 @@ class OrderTestData {
       price: 15.65);
   static OrderModel order4 = OrderModel(
       isBuy: false,
-      instrument: InstrumentTestData.sol,
+      instrument: "SOL",
       productType: ProductTypeEnum.trade,
       leverage: 5,
       orderType: OrderTypeEnum.limit,

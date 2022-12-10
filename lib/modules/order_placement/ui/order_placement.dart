@@ -109,7 +109,7 @@ class OrderPlacement extends StatelessWidget {
               height: 8,
             ),
             Text(
-              AppFormatter.formatCurrencyUSD(instrument.price),
+              AppFormatter.formatCurrencyINR(instrument.price),
               style: AppTextStyles.bodyRegular.copyWith(
                   color: instrument.change >= 0
                       ? AppColors.textGreen

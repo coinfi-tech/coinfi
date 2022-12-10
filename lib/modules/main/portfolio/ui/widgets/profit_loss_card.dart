@@ -27,8 +27,8 @@ class ProfitLossCard extends StatelessWidget {
           ),
           Text(
             profit >= 0
-                ? "+${AppFormatter.formatCurrencyUSD(profit)}"
-                : "${AppFormatter.formatCurrencyUSD(profit)}",
+                ? "+${AppFormatter.formatCurrencyINR(profit)}"
+                : "${AppFormatter.formatCurrencyINR(profit)}",
             style: AppTextStyles.bodyLarge.copyWith(
                 color: profit >= 0 ? AppColors.buyColor : AppColors.sellColor),
           ),

@@ -1,4 +1,7 @@
+import 'package:coinfi/core/theme/dimensions.dart';
 import 'package:coinfi/data/models/instrument_model.dart';
+import 'package:coinfi/modules/global_widgets/divider/divider.dart';
+import 'package:coinfi/modules/global_widgets/icons/app_icons.dart';
 import 'package:coinfi/modules/main/market/state/market_data/market_data_controller.dart';
 import 'package:coinfi/modules/main/market/ui/widgets/instrument_tile.dart';
 import 'package:flutter/material.dart';
@@ -28,18 +31,55 @@ class Market extends StatelessWidget {
         elevation: 0,
       ),
       body: SafeArea(
-        child: Obx(
-          () => Column(
-            children: [
-              for (var instrument in marketDataController.instrumentList)
-                GestureDetector(
-                    behavior: HitTestBehavior.opaque,
-                    onTap: () {
-                      showInstrumentBottomSheet(context, instrument);
-                    },
-                    child: InstrumentTile(instrument: instrument.value)),
-            ],
-          ),
+        child: Column(
+          children: [
+            Padding(
+              padding: EdgeInsets.symmetric(
+                  horizontal: Dimensions.horizontalPadding,
+                  vertical: Dimensions.verticalPadding),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Icon(
+                    AppIcons.search,
+                    color: AppColors.blue,
+                    size: 20,
+                  ),
+                  Icon(
+                    AppIcons.filter,
+                    color: AppColors.blue,
+                    size: 20,
+                  ),
+                ],
+              ),
+            ),
+            AppDivider.uiDividerGray_30,
+            Obx(
+              () => Column(
+                children: marketDataController.instrumentMap.values
+                    .map(
+                      (instrument) => GestureDetector(
+                        behavior: HitTestBehavior.opaque,
+                        onTap: () {
+                          showInstrumentBottomSheet(context, instrument);
+                        },
+                        child: InstrumentTile(instrument: instrument.value),
+                      ),
+                    )
+                    .toList(),
+                // children: [
+                //   for (var instrument
+                //       in marketDataController.instrumentMap.entries)
+                //     GestureDetector(
+                //         behavior: HitTestBehavior.opaque,
+                //         onTap: () {
+                //           showInstrumentBottomSheet(context, instrument);
+                //         },
+                //         child: InstrumentTile(instrument: instrument.value)),
+                // ],
+              ),
+            ),
+          ],
         ),
       ),
     );

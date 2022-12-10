@@ -47,16 +47,12 @@ class AppTextStyles {
       TextStyle(fontSize: 10, height: 16 / 10, fontWeight: FontWeight.w500);
 
   ///INTERACTIONS
-  static const TextStyle linkRegular = TextStyle(
-      fontSize: 16,
-      height: 20 / 16,
-      fontWeight: FontWeight.w600,
-      decoration: TextDecoration.underline);
-  static const TextStyle linkSmall = TextStyle(
-      fontSize: 12,
-      height: 16 / 12,
-      fontWeight: FontWeight.w600,
-      decoration: TextDecoration.underline);
+  static const TextStyle linkRegular =
+      TextStyle(fontSize: 16, height: 16 / 16, fontWeight: FontWeight.w400);
+  static const TextStyle link14 =
+      TextStyle(fontSize: 14, height: 14 / 14, fontWeight: FontWeight.w400);
+  static const TextStyle linkSmall =
+      TextStyle(fontSize: 12, height: 12 / 12, fontWeight: FontWeight.w400);
   static const TextStyle strikeRegular = TextStyle(
       fontSize: 16,
       height: 16 / 16,

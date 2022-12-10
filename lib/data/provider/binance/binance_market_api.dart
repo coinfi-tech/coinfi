@@ -15,10 +15,15 @@ class BinanceMarketApiClient {
   // }
 
   Stream<InstrumentModel> getInstrumentTickerStream(String instrumentTag) {
-    final channel = WebSocketChannel.connect(
-      Uri.parse('wss://fstream.binance.com/ws/${instrumentTag}usdt@ticker'),
-    );
-    return channel.stream.map(_instrumentModelFromInstrumentTickerEvent);
+    try {
+      final channel = WebSocketChannel.connect(
+        Uri.parse('wss://fstream.binance.com/ws/${instrumentTag}usdt@ticker'),
+      );
+      return channel.stream.map(_instrumentModelFromInstrumentTickerEvent);
+    } catch (e) {
+      log("Error: ${e.toString()}");
+      throw Exception("Couldn't fetch stream for instrument: $instrumentTag");
+    }
   }
 
   InstrumentModel _instrumentModelFromInstrumentTickerEvent(dynamic event) {
@@ -28,13 +33,12 @@ class BinanceMarketApiClient {
     // var price = double.parse(parsed['data']['p']);
     // if (price == null) price = 0.00;
     InstrumentModel instrumentModel = InstrumentModel(
-        instrument: parsed['s'] ?? "",
+        instrument: parsed['s'].toString().replaceAll("USDT", ""),
         currency: "USDT",
-        price: double.parse(parsed['p'] ?? 0.00),
-        change: double.parse(parsed['P'] ?? 0.00),
+        price: double.parse(parsed['c']) * 85.00,
+        change: double.parse(parsed['P']),
         marketDepth: MarketDepthTestData.marketDepthData,
         marketStats: MarketDepthTestData.marketStatsData);
-
     return instrumentModel;
   }
 }

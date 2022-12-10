@@ -18,19 +18,19 @@ class AppMain extends StatelessWidget {
 
   List<Widget> _buildScreens() {
     return [
-      Portfolio(),
-      Orders(),
-      Home(),
       Market(),
+      Orders(),
+      Portfolio(),
+      Home(),
     ];
   }
 
   List<PersistentBottomNavBarItem> _navBarsItems(BuildContext context) {
     return [
-      navBarItem(AppIcons.portfolio, "Portfolio"),
-      navBarItem(AppIcons.orders, "Orders"),
-      navBarItem(AppIcons.home, "Home"),
       navBarItem(AppIcons.market, "Market"),
+      navBarItem(AppIcons.orders, "Orders"),
+      navBarItem(AppIcons.portfolio, "Portfolio"),
+      navBarItem(AppIcons.account, "Account"),
     ];
   }
 

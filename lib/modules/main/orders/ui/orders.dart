@@ -32,10 +32,22 @@ class Orders extends StatelessWidget {
                   color: AppColors.blue,
                   size: 20,
                 ),
-                Icon(
-                  AppIcons.filter,
-                  color: AppColors.blue,
-                  size: 20,
+                Row(
+                  children: [
+                    Text(
+                      "Order History",
+                      style:
+                          AppTextStyles.link14.copyWith(color: AppColors.blue),
+                    ),
+                    SizedBox(
+                      width: 8,
+                    ),
+                    Icon(
+                      AppIcons.filter,
+                      color: AppColors.blue,
+                      size: 20,
+                    ),
+                  ],
                 ),
               ],
             ),

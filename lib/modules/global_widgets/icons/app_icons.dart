@@ -5,7 +5,7 @@ class AppIcons {
   static const IconData market = Icons.bar_chart_rounded;
   static const IconData orders = Icons.list_alt_rounded;
   static const IconData portfolio = Icons.account_balance_rounded;
-  static const IconData account = Icons.person_outline_rounded;
+  static const IconData account = Icons.person;
 
   //ORDERS
   static const IconData filter = Icons.filter_list_rounded;

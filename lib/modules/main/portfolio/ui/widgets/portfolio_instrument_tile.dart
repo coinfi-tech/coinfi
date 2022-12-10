@@ -5,18 +5,23 @@ import 'package:coinfi/core/utils/AppFormatter.dart';
 import 'package:coinfi/data/enums/order_type_enum.dart';
 import 'package:coinfi/data/enums/product_type_enum.dart';
 import 'package:coinfi/data/models/order_model.dart';
+import 'package:coinfi/data/models/position_model.dart';
 import 'package:coinfi/modules/global_widgets/icons/app_icons.dart';
 import 'package:coinfi/modules/global_widgets/pill/pill_secondary.dart';
+import 'package:coinfi/modules/main/portfolio/state/portfolio/portfolio_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class PortfolioInstrumentTile extends StatelessWidget {
-  const PortfolioInstrumentTile({Key? key, required this.order})
-      : super(key: key);
+  PortfolioInstrumentTile({Key? key, required this.position}) : super(key: key);
 
-  final OrderModel order;
+  final PositionModel position;
+
+  final PortfolioController portfolioController = Get.find();
 
   @override
   Widget build(BuildContext context) {
+    OrderModel order = position.order;
     Color buySellColor = order.isBuy ? AppColors.buyColor : AppColors.sellColor;
 
     return Container(
@@ -63,19 +68,25 @@ class PortfolioInstrumentTile extends StatelessWidget {
                   SizedBox(
                     width: 4,
                   ),
-                  Text("${AppFormatter.formatCurrency(order.price)}",
+                  Text("${AppFormatter.formatCurrencyINR(order.price)}",
                       style: AppTextStyles.bodySmall),
                 ],
               ),
-              Text(
-                order.getProfitPercentage() >= 0
-                    ? "+${order.getProfitPercentage().toStringAsFixed(2)} %"
-                    : "${order.getProfitPercentage().toStringAsFixed(2)} %",
-                style: AppTextStyles.bodySmall.copyWith(
-                    color: order.getProfit() >= 0
-                        ? AppColors.buyColor
-                        : AppColors.sellColor),
-              ),
+              position.profitPercentage != null
+                  ? Text(
+                      position.profitPercentage! >= 0
+                          ? "+${position.profitPercentage!.toStringAsFixed(2)} %"
+                          : "${position.profitPercentage!.toStringAsFixed(2)} %",
+                      style: AppTextStyles.bodySmall.copyWith(
+                          color: position.profitPercentage! >= 0
+                              ? AppColors.buyColor
+                              : AppColors.sellColor),
+                    )
+                  : Text(
+                      "NaN",
+                      style: AppTextStyles.bodySmall
+                          .copyWith(color: AppColors.textGray_60),
+                    ),
             ],
           ),
           SizedBox(
@@ -85,18 +96,24 @@ class PortfolioInstrumentTile extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                order.instrument.instrument,
+                order.instrument,
                 style: AppTextStyles.bodyRegular,
               ),
-              Text(
-                order.getProfit() >= 0
-                    ? "+${AppFormatter.formatCurrencyUSD(order.getProfit())}"
-                    : "${AppFormatter.formatCurrencyUSD(order.getProfit())}",
-                style: AppTextStyles.bodyRegular.copyWith(
-                    color: order.getProfit() >= 0
-                        ? AppColors.buyColor
-                        : AppColors.sellColor),
-              ),
+              position.profit != null
+                  ? Text(
+                      position.profit! >= 0
+                          ? "+${AppFormatter.formatCurrencyINR(position.profit!)}"
+                          : "${AppFormatter.formatCurrencyINR(position.profit!)}",
+                      style: AppTextStyles.bodyRegular.copyWith(
+                          color: position.profit! >= 0
+                              ? AppColors.buyColor
+                              : AppColors.sellColor),
+                    )
+                  : Text(
+                      "NaN",
+                      style: AppTextStyles.bodyRegular
+                          .copyWith(color: AppColors.textGray_60),
+                    ),
             ],
           ),
           SizedBox(
@@ -116,7 +133,7 @@ class PortfolioInstrumentTile extends StatelessWidget {
                     width: 4,
                   ),
                   Text(
-                    AppFormatter.formatCurrency(order.invested),
+                    AppFormatter.formatCurrencyINR(order.invested),
                     style: AppTextStyles.bodySmall,
                   ),
                 ],
@@ -131,11 +148,26 @@ class PortfolioInstrumentTile extends StatelessWidget {
                   SizedBox(
                     width: 4,
                   ),
-                  Text(
-                    "12640.70",
-                    style: AppTextStyles.bodySmall
-                        .copyWith(color: AppColors.textGray_60),
-                  ),
+                  portfolioController.marketDataController
+                              .getPrice(order.instrument) !=
+                          null
+                      ? Obx(
+                          () {
+                            double ltp = portfolioController
+                                .marketDataController
+                                .getPrice(order.instrument)!;
+                            return Text(
+                              AppFormatter.formatCurrency(ltp),
+                              style: AppTextStyles.bodySmall
+                                  .copyWith(color: AppColors.textGray_60),
+                            );
+                          },
+                        )
+                      : Text(
+                          "NaN",
+                          style: AppTextStyles.bodySmall
+                              .copyWith(color: AppColors.textGray_60),
+                        ),
                 ],
               )
             ],
