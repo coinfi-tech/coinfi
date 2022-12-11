@@ -23,31 +23,56 @@ class InstrumentBottomSheetLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          ///Instrument main details
-          instrumentTitle(),
-          const Divider(
-            color: AppColors.uiGray_40,
-            height: 0,
-          ),
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(15),
+          topRight: Radius.circular(15),
+        ),
+      ),
+      child: DraggableScrollableSheet(
+        initialChildSize: 0.4,
+        minChildSize: 0.2,
+        maxChildSize: 0.87,
+        builder: (BuildContext context, ScrollController scrollController) {
+          return SingleChildScrollView(
+            controller: scrollController,
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(15),
+                  topRight: Radius.circular(15),
+                ),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  ///Instrument main details
+                  instrumentTitle(),
+                  const Divider(
+                    color: AppColors.uiGray_40,
+                    height: 0,
+                  ),
 
-          ///Instrument data components
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              buySellSection(),
-              dividerWithPadding(),
-              marketDepthSection(),
-              dividerWithPadding(),
-              marketStatsSection(),
-            ],
-          ),
-        ],
+                  ///Instrument data components
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      buySellSection(),
+                      dividerWithPadding(),
+                      marketDepthSection(),
+                      dividerWithPadding(),
+                      marketStatsSection(),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
       ),
     );
   }
@@ -61,7 +86,7 @@ class InstrumentBottomSheetLayout extends StatelessWidget {
         children: [
           Text(
             instrument.instrument,
-            style: AppTextStyles.h4,
+            style: AppTextStyles.h4.copyWith(color: AppColors.uiGray_80),
           ),
           SizedBox(
             height: 8,
@@ -97,14 +122,14 @@ class InstrumentBottomSheetLayout extends StatelessWidget {
 
   Widget dividerWithPadding() {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24.0),
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: AppDivider.uiDividerGray,
     );
   }
 
   Widget buySellSection() {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+      padding: EdgeInsets.only(left: 24, right: 24, top: 24, bottom: 12),
       child: Column(
         children: [
           ///Buy Sell
@@ -124,7 +149,7 @@ class InstrumentBottomSheetLayout extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                width: 32,
+                width: 16,
               ),
               Expanded(
                 child: ButtonPrimaryB(
@@ -141,7 +166,7 @@ class InstrumentBottomSheetLayout extends StatelessWidget {
             ],
           ),
           SizedBox(
-            height: 32,
+            height: 12,
           ),
 
           ///View Chart

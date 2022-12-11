@@ -19,7 +19,7 @@ class ButtonPrimary extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       style: ButtonStyle(
-        minimumSize: MaterialStateProperty.all<Size>(Size(128, 64)),
+        minimumSize: MaterialStateProperty.all<Size>(Size(128, 32)),
         padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
             const EdgeInsets.all(14)),
         backgroundColor: MaterialStateProperty.all<Color>(color),
@@ -35,8 +35,8 @@ class ButtonPrimary extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            text,
-            style: AppTextStyles.bodyRegular,
+            text.toUpperCase(),
+            style: AppTextStyles.body14.copyWith(fontWeight: FontWeight.w700),
           ),
         ],
       ),
