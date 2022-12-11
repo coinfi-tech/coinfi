@@ -1,4 +1,4 @@
-import 'package:coinfi/data/models/instrument_model.dart';
+import 'package:futurecoin/data/models/instrument_model.dart';
 import 'market_test_data.dart';
 
 class InstrumentTestData {

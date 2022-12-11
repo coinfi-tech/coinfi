@@ -1,6 +1,6 @@
-import 'package:coinfi/core/theme/colors.dart';
-import 'package:coinfi/core/theme/text_styles.dart';
-import 'package:coinfi/modules/main/account/ui/widgets/user_card.dart';
+import 'package:futurecoin/core/theme/colors.dart';
+import 'package:futurecoin/core/theme/text_styles.dart';
+import 'package:futurecoin/modules/main/account/ui/widgets/user_card.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
@@ -34,7 +34,7 @@ class Account extends StatelessWidget {
               Column(
                 children: [
                   Text(
-                    "FutureCoin",
+                    "futurecoin",
                     style: AppTextStyles.h3.copyWith(
                         color: AppColors.textGray_40,
                         letterSpacing: 1,

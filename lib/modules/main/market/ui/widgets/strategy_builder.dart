@@ -1,8 +1,8 @@
-import 'package:coinfi/core/theme/colors.dart';
-import 'package:coinfi/data/models/test_data/strategy_test_data.dart';
-import 'package:coinfi/modules/global_widgets/divider/divider.dart';
-import 'package:coinfi/modules/global_widgets/icons/app_icons.dart';
-import 'package:coinfi/modules/main/market/ui/widgets/strategy_card.dart';
+import 'package:futurecoin/core/theme/colors.dart';
+import 'package:futurecoin/data/models/test_data/strategy_test_data.dart';
+import 'package:futurecoin/modules/global_widgets/divider/divider.dart';
+import 'package:futurecoin/modules/global_widgets/icons/app_icons.dart';
+import 'package:futurecoin/modules/main/market/ui/widgets/strategy_card.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/theme/dimensions.dart';

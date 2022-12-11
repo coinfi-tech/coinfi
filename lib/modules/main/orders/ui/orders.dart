@@ -1,11 +1,11 @@
-import 'package:coinfi/core/theme/colors.dart';
-import 'package:coinfi/core/theme/dimensions.dart';
-import 'package:coinfi/core/theme/text_styles.dart';
-import 'package:coinfi/data/models/order_model.dart';
-import 'package:coinfi/modules/global_widgets/divider/divider.dart';
-import 'package:coinfi/modules/global_widgets/icons/app_icons.dart';
-import 'package:coinfi/modules/main/orders/state/orders/orders_controller.dart';
-import 'package:coinfi/modules/main/orders/ui/widgets/order_tile.dart';
+import 'package:futurecoin/core/theme/colors.dart';
+import 'package:futurecoin/core/theme/dimensions.dart';
+import 'package:futurecoin/core/theme/text_styles.dart';
+import 'package:futurecoin/data/models/order_model.dart';
+import 'package:futurecoin/modules/global_widgets/divider/divider.dart';
+import 'package:futurecoin/modules/global_widgets/icons/app_icons.dart';
+import 'package:futurecoin/modules/main/orders/state/orders/orders_controller.dart';
+import 'package:futurecoin/modules/main/orders/ui/widgets/order_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

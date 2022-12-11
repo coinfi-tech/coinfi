@@ -1,10 +1,10 @@
 import 'dart:collection';
 import 'dart:developer';
 
-import 'package:coinfi/data/models/instrument_model.dart';
-import 'package:coinfi/data/models/test_data/instrument_test_data.dart';
-import 'package:coinfi/data/models/test_data/market_test_data.dart';
-import 'package:coinfi/modules/main/market/state/market_data/market_data_repository.dart';
+import 'package:futurecoin/data/models/instrument_model.dart';
+import 'package:futurecoin/data/models/test_data/instrument_test_data.dart';
+import 'package:futurecoin/data/models/test_data/market_test_data.dart';
+import 'package:futurecoin/modules/main/market/state/market_data/market_data_repository.dart';
 import 'package:get/get.dart';
 
 class MarketDataController extends GetxController {

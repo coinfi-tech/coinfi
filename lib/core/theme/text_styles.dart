@@ -1,5 +1,5 @@
 import 'dart:ui';
-import 'package:coinfi/core/theme/colors.dart';
+import 'package:futurecoin/core/theme/colors.dart';
 import 'package:flutter/material.dart';
 
 class AppTextStyles {

@@ -1,4 +1,4 @@
-import 'package:coinfi/data/models/order_model.dart';
+import 'package:futurecoin/data/models/order_model.dart';
 
 class PositionModel {
   OrderModel order;

@@ -1,7 +1,7 @@
-import 'package:coinfi/data/models/market_depth_model.dart';
-import 'package:coinfi/data/models/order_model.dart';
-import 'package:coinfi/data/models/test_data/order_test_data.dart';
-import 'package:coinfi/modules/main/market/state/market_data/market_data_controller.dart';
+import 'package:futurecoin/data/models/market_depth_model.dart';
+import 'package:futurecoin/data/models/order_model.dart';
+import 'package:futurecoin/data/models/test_data/order_test_data.dart';
+import 'package:futurecoin/modules/main/market/state/market_data/market_data_controller.dart';
 import 'package:get/get.dart';
 
 class OrdersController extends GetxController {

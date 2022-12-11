@@ -1,8 +1,8 @@
-import 'package:coinfi/core/theme/colors.dart';
-import 'package:coinfi/core/theme/text_styles.dart';
-import 'package:coinfi/modules/global_widgets/input/input_primary.dart';
-import 'package:coinfi/modules/global_widgets/input/label_primary.dart';
-import 'package:coinfi/modules/order_placement/ui/widgets/order_form_label_with_icon.dart';
+import 'package:futurecoin/core/theme/colors.dart';
+import 'package:futurecoin/core/theme/text_styles.dart';
+import 'package:futurecoin/modules/global_widgets/input/input_primary.dart';
+import 'package:futurecoin/modules/global_widgets/input/label_primary.dart';
+import 'package:futurecoin/modules/order_placement/ui/widgets/order_form_label_with_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 

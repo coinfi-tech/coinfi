@@ -1,4 +1,4 @@
-import 'package:coinfi/core/theme/text_styles.dart';
+import 'package:futurecoin/core/theme/text_styles.dart';
 import 'package:flutter/material.dart';
 
 class LabelPrimary extends StatelessWidget {

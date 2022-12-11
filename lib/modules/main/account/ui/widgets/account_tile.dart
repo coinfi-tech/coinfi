@@ -1,6 +1,6 @@
-import 'package:coinfi/core/theme/colors.dart';
-import 'package:coinfi/core/theme/text_styles.dart';
-import 'package:coinfi/modules/global_widgets/divider/divider.dart';
+import 'package:futurecoin/core/theme/colors.dart';
+import 'package:futurecoin/core/theme/text_styles.dart';
+import 'package:futurecoin/modules/global_widgets/divider/divider.dart';
 import 'package:flutter/material.dart';
 
 class AccountTile extends StatelessWidget {

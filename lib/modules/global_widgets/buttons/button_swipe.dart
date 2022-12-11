@@ -1,5 +1,5 @@
-import 'package:coinfi/core/theme/colors.dart';
-import 'package:coinfi/core/theme/text_styles.dart';
+import 'package:futurecoin/core/theme/colors.dart';
+import 'package:futurecoin/core/theme/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:swipeable_button_view/swipeable_button_view.dart';
 

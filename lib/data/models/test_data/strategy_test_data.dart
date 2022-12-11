@@ -1,4 +1,4 @@
-import 'package:coinfi/data/models/strategy_model.dart';
+import 'package:futurecoin/data/models/strategy_model.dart';
 
 class StrategyTestData {
   static StrategyModel strategy1 = StrategyModel(

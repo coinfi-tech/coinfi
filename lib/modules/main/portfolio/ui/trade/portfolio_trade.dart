@@ -1,14 +1,14 @@
-import 'package:coinfi/core/theme/colors.dart';
-import 'package:coinfi/core/theme/dimensions.dart';
-import 'package:coinfi/core/theme/text_styles.dart';
-import 'package:coinfi/data/models/order_model.dart';
-import 'package:coinfi/data/models/position_model.dart';
-import 'package:coinfi/data/models/test_data/order_test_data.dart';
-import 'package:coinfi/modules/global_widgets/divider/divider.dart';
-import 'package:coinfi/modules/global_widgets/icons/app_icons.dart';
-import 'package:coinfi/modules/main/portfolio/state/portfolio/portfolio_controller.dart';
-import 'package:coinfi/modules/main/portfolio/ui/widgets/portfolio_instrument_tile.dart';
-import 'package:coinfi/modules/main/portfolio/ui/widgets/profit_loss_card.dart';
+import 'package:futurecoin/core/theme/colors.dart';
+import 'package:futurecoin/core/theme/dimensions.dart';
+import 'package:futurecoin/core/theme/text_styles.dart';
+import 'package:futurecoin/data/models/order_model.dart';
+import 'package:futurecoin/data/models/position_model.dart';
+import 'package:futurecoin/data/models/test_data/order_test_data.dart';
+import 'package:futurecoin/modules/global_widgets/divider/divider.dart';
+import 'package:futurecoin/modules/global_widgets/icons/app_icons.dart';
+import 'package:futurecoin/modules/main/portfolio/state/portfolio/portfolio_controller.dart';
+import 'package:futurecoin/modules/main/portfolio/ui/widgets/portfolio_instrument_tile.dart';
+import 'package:futurecoin/modules/main/portfolio/ui/widgets/profit_loss_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

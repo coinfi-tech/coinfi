@@ -1,13 +1,13 @@
-import 'package:coinfi/core/theme/colors.dart';
-import 'package:coinfi/core/theme/dimensions.dart';
-import 'package:coinfi/core/theme/text_styles.dart';
-import 'package:coinfi/core/utils/AppFormatter.dart';
-import 'package:coinfi/data/enums/product_type_enum.dart';
-import 'package:coinfi/data/models/order_model.dart';
-import 'package:coinfi/modules/global_widgets/icons/app_icons.dart';
-import 'package:coinfi/modules/global_widgets/pill/pill_primary.dart';
-import 'package:coinfi/modules/global_widgets/pill/pill_secondary.dart';
-import 'package:coinfi/modules/main/market/state/market_data/market_data_controller.dart';
+import 'package:futurecoin/core/theme/colors.dart';
+import 'package:futurecoin/core/theme/dimensions.dart';
+import 'package:futurecoin/core/theme/text_styles.dart';
+import 'package:futurecoin/core/utils/AppFormatter.dart';
+import 'package:futurecoin/data/enums/product_type_enum.dart';
+import 'package:futurecoin/data/models/order_model.dart';
+import 'package:futurecoin/modules/global_widgets/icons/app_icons.dart';
+import 'package:futurecoin/modules/global_widgets/pill/pill_primary.dart';
+import 'package:futurecoin/modules/global_widgets/pill/pill_secondary.dart';
+import 'package:futurecoin/modules/main/market/state/market_data/market_data_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

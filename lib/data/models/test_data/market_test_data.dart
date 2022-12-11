@@ -1,5 +1,5 @@
-import 'package:coinfi/data/models/market_depth_model.dart';
-import 'package:coinfi/data/models/market_stats_model.dart';
+import 'package:futurecoin/data/models/market_depth_model.dart';
+import 'package:futurecoin/data/models/market_stats_model.dart';
 
 class MarketDepthTestData {
   static List<BidDataModel> getBidData() {

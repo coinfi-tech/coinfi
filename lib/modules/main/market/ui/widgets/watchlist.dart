@@ -1,14 +1,14 @@
-import 'package:coinfi/core/theme/dimensions.dart';
-import 'package:coinfi/data/models/instrument_model.dart';
-import 'package:coinfi/modules/global_widgets/divider/divider.dart';
-import 'package:coinfi/modules/global_widgets/icons/app_icons.dart';
-import 'package:coinfi/modules/main/market/state/market_data/market_data_controller.dart';
-import 'package:coinfi/modules/main/market/ui/widgets/instrument_bottom_sheet/instrument_bottom_sheet.dart';
-import 'package:coinfi/modules/main/market/ui/widgets/instrument_tile.dart';
+import 'package:futurecoin/core/theme/dimensions.dart';
+import 'package:futurecoin/data/models/instrument_model.dart';
+import 'package:futurecoin/modules/global_widgets/divider/divider.dart';
+import 'package:futurecoin/modules/global_widgets/icons/app_icons.dart';
+import 'package:futurecoin/modules/main/market/state/market_data/market_data_controller.dart';
+import 'package:futurecoin/modules/main/market/ui/widgets/instrument_bottom_sheet/instrument_bottom_sheet.dart';
+import 'package:futurecoin/modules/main/market/ui/widgets/instrument_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:coinfi/core/theme/colors.dart';
-import 'package:coinfi/core/theme/text_styles.dart';
+import 'package:futurecoin/core/theme/colors.dart';
+import 'package:futurecoin/core/theme/text_styles.dart';
 
 class Watchlist extends StatelessWidget {
   Watchlist({Key? key}) : super(key: key);

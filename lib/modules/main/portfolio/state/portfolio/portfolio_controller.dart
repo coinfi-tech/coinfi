@@ -1,9 +1,9 @@
-import 'package:coinfi/data/enums/product_type_enum.dart';
-import 'package:coinfi/data/models/instrument_model.dart';
-import 'package:coinfi/data/models/order_model.dart';
-import 'package:coinfi/data/models/position_model.dart';
-import 'package:coinfi/data/models/test_data/order_test_data.dart';
-import 'package:coinfi/modules/main/market/state/market_data/market_data_controller.dart';
+import 'package:futurecoin/data/enums/product_type_enum.dart';
+import 'package:futurecoin/data/models/instrument_model.dart';
+import 'package:futurecoin/data/models/order_model.dart';
+import 'package:futurecoin/data/models/position_model.dart';
+import 'package:futurecoin/data/models/test_data/order_test_data.dart';
+import 'package:futurecoin/modules/main/market/state/market_data/market_data_controller.dart';
 import 'package:get/get.dart';
 
 class PortfolioController extends GetxController {

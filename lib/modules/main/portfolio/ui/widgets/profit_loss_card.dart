@@ -1,7 +1,7 @@
-import 'package:coinfi/core/theme/colors.dart';
-import 'package:coinfi/core/theme/shadows.dart';
-import 'package:coinfi/core/theme/text_styles.dart';
-import 'package:coinfi/core/utils/AppFormatter.dart';
+import 'package:futurecoin/core/theme/colors.dart';
+import 'package:futurecoin/core/theme/shadows.dart';
+import 'package:futurecoin/core/theme/text_styles.dart';
+import 'package:futurecoin/core/utils/AppFormatter.dart';
 import 'package:flutter/material.dart';
 
 class ProfitLossCard extends StatelessWidget {

@@ -1,8 +1,8 @@
 import 'dart:developer';
 
-import 'package:coinfi/data/models/instrument_model.dart';
-import 'package:coinfi/modules/main/market/state/market_data/market_data_controller.dart';
-import 'package:coinfi/modules/order_placement/args/order_placement_screen_args.dart';
+import 'package:futurecoin/data/models/instrument_model.dart';
+import 'package:futurecoin/modules/main/market/state/market_data/market_data_controller.dart';
+import 'package:futurecoin/modules/order_placement/args/order_placement_screen_args.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';

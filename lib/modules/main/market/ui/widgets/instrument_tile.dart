@@ -1,10 +1,10 @@
-import 'package:coinfi/core/utils/AppFormatter.dart';
-import 'package:coinfi/data/models/instrument_model.dart';
-import 'package:coinfi/modules/main/market/ui/widgets/instrument_bottom_sheet/instrument_bottom_sheet.dart';
+import 'package:futurecoin/core/utils/AppFormatter.dart';
+import 'package:futurecoin/data/models/instrument_model.dart';
+import 'package:futurecoin/modules/main/market/ui/widgets/instrument_bottom_sheet/instrument_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 
-import 'package:coinfi/core/theme/colors.dart';
-import 'package:coinfi/core/theme/text_styles.dart';
+import 'package:futurecoin/core/theme/colors.dart';
+import 'package:futurecoin/core/theme/text_styles.dart';
 
 class InstrumentTile extends StatelessWidget {
   const InstrumentTile({Key? key, required this.instrument}) : super(key: key);

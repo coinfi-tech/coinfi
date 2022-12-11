@@ -1,10 +1,10 @@
 import 'dart:ui';
 
-import 'package:coinfi/core/theme/font_family.dart';
+import 'package:futurecoin/core/theme/font_family.dart';
 import 'package:flutter/material.dart';
 
-import 'package:coinfi/core/theme/colors.dart';
-import 'package:coinfi/core/theme/text_styles.dart';
+import 'package:futurecoin/core/theme/colors.dart';
+import 'package:futurecoin/core/theme/text_styles.dart';
 
 /// Colour Creation:
 /// In order to create the custom colours you need to create a `Map<int, Color>` object

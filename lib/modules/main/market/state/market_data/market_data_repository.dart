@@ -1,5 +1,5 @@
-import 'package:coinfi/data/models/instrument_model.dart';
-import 'package:coinfi/data/provider/binance/binance_market_api.dart';
+import 'package:futurecoin/data/models/instrument_model.dart';
+import 'package:futurecoin/data/provider/binance/binance_market_api.dart';
 
 class MarketDataRepository {
   final BinanceMarketApiClient marketApiClient;

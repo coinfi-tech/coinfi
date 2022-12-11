@@ -1,4 +1,4 @@
-import 'package:coinfi/core/utils/AppFormatter.dart';
+import 'package:futurecoin/core/utils/AppFormatter.dart';
 
 class MarketStatsModel {
   final double volume;

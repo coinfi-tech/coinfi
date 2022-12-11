@@ -1,6 +1,6 @@
-import 'package:coinfi/core/theme/colors.dart';
-import 'package:coinfi/core/theme/text_styles.dart';
-import 'package:coinfi/modules/main/portfolio/ui/invest/portfolio_invest.dart';
+import 'package:futurecoin/core/theme/colors.dart';
+import 'package:futurecoin/core/theme/text_styles.dart';
+import 'package:futurecoin/modules/main/portfolio/ui/invest/portfolio_invest.dart';
 import 'package:flutter/material.dart';
 
 import 'trade/portfolio_trade.dart';

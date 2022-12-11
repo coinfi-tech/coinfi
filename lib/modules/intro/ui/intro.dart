@@ -1,7 +1,7 @@
-import 'package:coinfi/core/constants/assets.dart';
-import 'package:coinfi/core/theme/colors.dart';
-import 'package:coinfi/core/theme/text_styles.dart';
-import 'package:coinfi/routes/app_pages.dart';
+import 'package:futurecoin/core/constants/assets.dart';
+import 'package:futurecoin/core/theme/colors.dart';
+import 'package:futurecoin/core/theme/text_styles.dart';
+import 'package:futurecoin/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -45,8 +45,8 @@ class Intro extends StatelessWidget {
     return [
       PageViewModel(
         decoration: pageDecoration,
-        title: "Welcome to FutureCoin",
-        body: "FutureCoin is the simplest crypto trading app ever",
+        title: "Welcome to futurecoin",
+        body: "futurecoin is the simplest crypto trading app ever",
         image: SizedBox(
           height: imageHeight,
           child: SvgPicture.asset(Assets.introImage1),

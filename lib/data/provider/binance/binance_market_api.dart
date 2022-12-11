@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:coinfi/data/models/instrument_model.dart';
-import 'package:coinfi/data/models/test_data/instrument_test_data.dart';
-import 'package:coinfi/data/models/test_data/market_test_data.dart';
+import 'package:futurecoin/data/models/instrument_model.dart';
+import 'package:futurecoin/data/models/test_data/instrument_test_data.dart';
+import 'package:futurecoin/data/models/test_data/market_test_data.dart';
 import 'package:get/get.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 

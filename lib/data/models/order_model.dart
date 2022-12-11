@@ -1,6 +1,6 @@
-import 'package:coinfi/data/enums/order_type_enum.dart';
-import 'package:coinfi/data/enums/product_type_enum.dart';
-import 'package:coinfi/data/models/instrument_model.dart';
+import 'package:futurecoin/data/enums/order_type_enum.dart';
+import 'package:futurecoin/data/enums/product_type_enum.dart';
+import 'package:futurecoin/data/models/instrument_model.dart';
 
 class OrderModel {
   bool isBuy;

@@ -1,4 +1,4 @@
-import 'package:coinfi/modules/main/portfolio/state/portfolio/portfolio_controller.dart';
+import 'package:futurecoin/modules/main/portfolio/state/portfolio/portfolio_controller.dart';
 import 'package:get/get.dart';
 
 class DIPortfolio {

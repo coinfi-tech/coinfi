@@ -1,7 +1,7 @@
-import 'package:coinfi/core/theme/colors.dart';
-import 'package:coinfi/core/theme/text_styles.dart';
-import 'package:coinfi/modules/global_widgets/buttons/button_secondary.dart';
-import 'package:coinfi/modules/main/market/ui/widgets/instrument_bottom_sheet/widgets/market_depth_table.dart';
+import 'package:futurecoin/core/theme/colors.dart';
+import 'package:futurecoin/core/theme/text_styles.dart';
+import 'package:futurecoin/modules/global_widgets/buttons/button_secondary.dart';
+import 'package:futurecoin/modules/main/market/ui/widgets/instrument_bottom_sheet/widgets/market_depth_table.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../../../data/models/market_depth_model.dart';

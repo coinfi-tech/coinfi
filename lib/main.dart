@@ -1,7 +1,7 @@
-import 'package:coinfi/core/constants/strings.dart';
-import 'package:coinfi/modules/order_placement/order_placement_binding.dart';
-import 'package:coinfi/routes/app_pages.dart';
-import 'package:coinfi/core/theme/app_theme.dart';
+import 'package:futurecoin/core/constants/strings.dart';
+import 'package:futurecoin/modules/order_placement/order_placement_binding.dart';
+import 'package:futurecoin/routes/app_pages.dart';
+import 'package:futurecoin/core/theme/app_theme.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';

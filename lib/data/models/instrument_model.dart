@@ -1,4 +1,4 @@
-import 'package:coinfi/core/utils/AppFormatter.dart';
+import 'package:futurecoin/core/utils/AppFormatter.dart';
 
 import 'market_depth_model.dart';
 import 'market_stats_model.dart';

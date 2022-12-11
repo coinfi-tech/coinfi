@@ -1,7 +1,7 @@
-import 'package:coinfi/data/enums/order_type_enum.dart';
-import 'package:coinfi/data/enums/product_type_enum.dart';
-import 'package:coinfi/data/models/order_model.dart';
-import 'package:coinfi/data/models/test_data/instrument_test_data.dart';
+import 'package:futurecoin/data/enums/order_type_enum.dart';
+import 'package:futurecoin/data/enums/product_type_enum.dart';
+import 'package:futurecoin/data/models/order_model.dart';
+import 'package:futurecoin/data/models/test_data/instrument_test_data.dart';
 
 class OrderTestData {
   static OrderModel order1 = OrderModel(

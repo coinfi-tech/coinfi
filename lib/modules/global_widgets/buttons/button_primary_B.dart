@@ -1,4 +1,4 @@
-import 'package:coinfi/core/theme/colors.dart';
+import 'package:futurecoin/core/theme/colors.dart';
 import 'package:flutter/material.dart';
 
 import 'button_primary.dart';

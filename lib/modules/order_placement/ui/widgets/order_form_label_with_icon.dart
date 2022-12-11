@@ -1,5 +1,5 @@
-import 'package:coinfi/core/theme/text_styles.dart';
-import 'package:coinfi/modules/global_widgets/input/label_primary.dart';
+import 'package:futurecoin/core/theme/text_styles.dart';
+import 'package:futurecoin/modules/global_widgets/input/label_primary.dart';
 import 'package:flutter/material.dart';
 
 class OrderFormLabel extends StatelessWidget {
