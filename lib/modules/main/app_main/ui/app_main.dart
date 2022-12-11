@@ -1,8 +1,9 @@
 import 'package:coinfi/core/theme/colors.dart';
+import 'package:coinfi/core/theme/shadows.dart';
 import 'package:coinfi/core/theme/text_styles.dart';
 import 'package:coinfi/modules/global_widgets/icons/app_icons.dart';
+import 'package:coinfi/modules/main/account/ui/account.dart';
 import 'package:coinfi/modules/main/app_main/state/bottom_nav/app_main_bottom_nav_controller.dart';
-import 'package:coinfi/modules/main/home/ui/home.dart';
 import 'package:coinfi/modules/main/market/ui/market.dart';
 import 'package:coinfi/modules/main/orders/ui/orders.dart';
 import 'package:coinfi/modules/main/portfolio/ui/portfolio.dart';
@@ -21,7 +22,7 @@ class AppMain extends StatelessWidget {
       Market(),
       Orders(),
       Portfolio(),
-      Home(),
+      Account(),
     ];
   }
 
@@ -38,9 +39,9 @@ class AppMain extends StatelessWidget {
   Widget build(BuildContext context) {
     return PersistentTabView(
       context,
-      // navBarHeight: 80,
+      navBarHeight: 64,
       // bottomScreenMargin: 100,
-      padding: NavBarPadding.only(bottom: 10),
+      padding: NavBarPadding.only(bottom: 12, top: 12),
       controller: appMainController.persistentTabController,
       screens: _buildScreens(),
       items: _navBarsItems(context),
@@ -55,15 +56,9 @@ class AppMain extends StatelessWidget {
       // Default is true.
       hideNavigationBarWhenKeyboardShows: true,
       // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
-      decoration:
-          const NavBarDecoration(colorBehindNavBar: Colors.white, boxShadow: [
-        BoxShadow(
-          color: AppColors.uiGray_20,
-          blurRadius: 1,
-          spreadRadius: 0,
-          offset: Offset(0, 0),
-        ),
-      ]),
+      decoration: NavBarDecoration(
+          colorBehindNavBar: Colors.white,
+          boxShadow: AppShadows.bottomNavShadow),
       popAllScreensOnTapOfSelectedTab: true,
       popActionScreens: PopActionScreensType.all,
       itemAnimationProperties: const ItemAnimationProperties(
@@ -86,7 +81,7 @@ class AppMain extends StatelessWidget {
     return PersistentBottomNavBarItem(
         icon: Icon(
           iconData,
-          size: 20,
+          size: 24,
         ),
         activeColorPrimary: AppColors.uiGray_80,
         inactiveColorPrimary: AppColors.uiGray_40,

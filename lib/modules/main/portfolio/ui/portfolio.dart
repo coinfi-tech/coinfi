@@ -38,7 +38,7 @@ class Portfolio extends StatelessWidget {
         labelPadding: EdgeInsets.all(16),
         labelColor: AppColors.textWhite,
         indicatorColor: AppColors.uiWhite,
-        indicatorPadding: EdgeInsets.symmetric(horizontal: 90, vertical: 8),
+        indicatorPadding: EdgeInsets.symmetric(horizontal: 80, vertical: 8),
         unselectedLabelColor: AppColors.uiGray_40,
         tabs: [tab("Invest"), tab("Trade")],
       ),

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:coinfi/core/theme/colors.dart';
 import 'package:coinfi/core/theme/text_styles.dart';
 import 'package:coinfi/core/utils/AppFormatter.dart';
@@ -23,56 +25,61 @@ class InstrumentBottomSheetLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(15),
-          topRight: Radius.circular(15),
+    return GestureDetector(
+      onTap: () {
+        Navigator.pop(context);
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(15),
+            topRight: Radius.circular(15),
+          ),
         ),
-      ),
-      child: DraggableScrollableSheet(
-        initialChildSize: 0.4,
-        minChildSize: 0.2,
-        maxChildSize: 0.87,
-        builder: (BuildContext context, ScrollController scrollController) {
-          return SingleChildScrollView(
-            controller: scrollController,
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(15),
-                  topRight: Radius.circular(15),
+        child: DraggableScrollableSheet(
+          initialChildSize: 0.4,
+          minChildSize: 0.2,
+          maxChildSize: 0.87,
+          builder: (BuildContext context, ScrollController scrollController) {
+            return SingleChildScrollView(
+              controller: scrollController,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(15),
+                    topRight: Radius.circular(15),
+                  ),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    ///Instrument main details
+                    instrumentTitle(),
+                    const Divider(
+                      color: AppColors.uiGray_40,
+                      height: 0,
+                    ),
+
+                    ///Instrument data components
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        buySellSection(),
+                        dividerWithPadding(),
+                        marketDepthSection(),
+                        dividerWithPadding(),
+                        marketStatsSection(),
+                      ],
+                    ),
+                  ],
                 ),
               ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  ///Instrument main details
-                  instrumentTitle(),
-                  const Divider(
-                    color: AppColors.uiGray_40,
-                    height: 0,
-                  ),
-
-                  ///Instrument data components
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      buySellSection(),
-                      dividerWithPadding(),
-                      marketDepthSection(),
-                      dividerWithPadding(),
-                      marketStatsSection(),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }

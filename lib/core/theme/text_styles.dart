@@ -24,6 +24,8 @@ class AppTextStyles {
   ///TEXT
   static const TextStyle bodyLarge =
       TextStyle(fontSize: 20, height: 24 / 20, fontWeight: FontWeight.w400);
+  static const TextStyle body18 =
+      TextStyle(fontSize: 18, height: 22 / 18, fontWeight: FontWeight.w400);
   static const TextStyle bodyRegular =
       TextStyle(fontSize: 16, height: 20 / 16, fontWeight: FontWeight.w400);
   static const TextStyle body14 =

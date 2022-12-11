@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 
 class DIMarket {
   static void injectDependencies() {
-    Get.lazyPut<MarketDataController>(() =>
+    Get.put<MarketDataController>(
         MarketDataController(MarketDataRepository(BinanceMarketApiClient())));
   }
 }

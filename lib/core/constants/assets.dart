@@ -13,14 +13,19 @@ class Assets {
   static const String logoColored = 'assets/logo/logo-yellow.svg';
 
   // intro screen assets
-  static const String introImage1 = "assets/images/intro/intro_1.svg";
-  static const String introImage2 = "assets/images/intro/intro_2.svg";
-  static const String introImage3 = "assets/images/intro/intro_3.svg";
-  static const String introImage4 = "assets/images/intro/intro_4.svg";
+  static const String introImage1 = "assets/images/intro/welcome.svg";
+  static const String introImage2 = "assets/images/intro/hassle_free.svg";
+  static const String introImage3 = "assets/images/intro/zero_tds.svg";
+  static const String introImage4 = "assets/images/intro/strategy.svg";
 
   //product images
-  static const String productImage1 = "assets/images/product/product_image_headphone.png";
-  static const String productImage2 = "assets/images/product/product_image_laptop.png";
+  static const String productImage1 =
+      "assets/images/product/product_image_headphone.png";
+  static const String productImage2 =
+      "assets/images/product/product_image_laptop.png";
+
+  //account images
+  static const String userAvatar = "assets/images/account/avatar1.svg";
 
 //app core global assets
 

@@ -56,4 +56,7 @@ class AppColors {
   static const sellColor = Color(0xFFff5722);
   static const profit = Color(0xFF0eb776);
   static const loss = Color(0xFFff5722);
+
+  static const intro_dot_active_color = Color(0xFFFBC343);
+  static const intro_dot_inactive_color = uiGray_40;
 }
