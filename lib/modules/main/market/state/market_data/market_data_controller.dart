@@ -12,24 +12,25 @@ class MarketDataController extends GetxController {
 
   final Map<String, Rx<InstrumentModel>> _instrumentMap = HashMap();
   MarketDataRepository marketDataRepository;
+  var symbols = [
+    'btc',
+    'eth',
+    'bnb',
+    'sol',
+    'xrp',
+    'doge',
+    'matic',
+    'bch',
+    'ltc',
+    'ada',
+    'ape',
+    'dot',
+  ];
 
   @override
   void onInit() {
     super.onInit();
-    var symbols = [
-      'btc',
-      'eth',
-      'bnb',
-      'sol',
-      'xrp',
-      'doge',
-      'matic',
-      'bch',
-      'ltc',
-      'ada',
-      'ape',
-      'dot',
-    ]; //'xrp', 'matic', 'doge'];
+    //'xrp', 'matic', 'doge'];
     for (String symbol in symbols) {
       Rx<InstrumentModel> symbolStream = InstrumentModel(
               instrument: "",

@@ -3,6 +3,6 @@ import 'package:get/get.dart';
 
 class DIOrders {
   static void injectDependencies() {
-    Get.lazyPut<OrdersController>(() => OrdersController());
+    Get.put<OrdersController>(OrdersController());
   }
 }

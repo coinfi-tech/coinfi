@@ -41,20 +41,36 @@ class Watchlist extends StatelessWidget {
             ),
           ),
           AppDivider.uiDividerGray_30,
+          // Obx(
+          //   () => Column(
+          //     children: marketDataController.instrumentMap.values
+          //         .map(
+          //           (instrument) => GestureDetector(
+          //             behavior: HitTestBehavior.opaque,
+          //             onTap: () {
+          //               showInstrumentBottomSheet(context, instrument);
+          //             },
+          //             child: InstrumentTile(instrument: instrument.value),
+          //           ),
+          //         )
+          //         .toList(),
+          //   ),
+          // ),
           Obx(
-            () => Column(
-              children: marketDataController.instrumentMap.values
-                  .map(
-                    (instrument) => GestureDetector(
-                      behavior: HitTestBehavior.opaque,
-                      onTap: () {
-                        showInstrumentBottomSheet(context, instrument);
-                      },
-                      child: InstrumentTile(instrument: instrument.value),
-                    ),
-                  )
-                  .toList(),
-            ),
+            () => Column(children: [
+              for (String symbol in marketDataController.symbols)
+                if (marketDataController.instrumentMap.containsKey(symbol))
+                  GestureDetector(
+                    behavior: HitTestBehavior.opaque,
+                    onTap: () {
+                      showInstrumentBottomSheet(
+                          context, marketDataController.instrumentMap[symbol]!);
+                    },
+                    child: InstrumentTile(
+                        instrument:
+                            marketDataController.instrumentMap[symbol]!.value),
+                  ),
+            ]),
           ),
         ],
       ),

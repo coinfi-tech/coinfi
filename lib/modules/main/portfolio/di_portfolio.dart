@@ -3,6 +3,6 @@ import 'package:get/get.dart';
 
 class DIPortfolio {
   static void injectDependencies() {
-    Get.lazyPut<PortfolioController>(() => PortfolioController());
+    Get.put<PortfolioController>(PortfolioController());
   }
 }
