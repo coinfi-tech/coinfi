@@ -1,10 +1,12 @@
 import 'package:futurecoin/core/theme/text_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:futurecoin/modules/order_placement/state/order_placement/order_placement_controller.dart';
 import 'package:get/get.dart';
 
 class LeverageSlider extends StatefulWidget {
-  const LeverageSlider({Key? key, required this.color}) : super(key: key);
+  LeverageSlider({Key? key, required this.color}) : super(key: key);
   final Color color;
+  final OrderPlacementController orderPlacementController = Get.find();
 
   @override
   State<LeverageSlider> createState() => _LeverageSliderState();
@@ -35,6 +37,7 @@ class _LeverageSliderState extends State<LeverageSlider> {
               setState(() {
                 _currentSliderValue = value;
               });
+              widget.orderPlacementController.onLeverageChanged(value);
             },
             activeColor: widget.color,
             inactiveColor: widget.color.withOpacity(0.2),

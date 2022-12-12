@@ -5,13 +5,13 @@ class StrategyTestData {
       title: "Grid Trading",
       description:
           "Automatically place buy and sell orders above and below the current price",
-      tags: ["Automatic", "Efficient Execution"]);
+      tags: ["Preset range"]);
   static StrategyModel strategy2 = StrategyModel(
       title: "Momentum Trading",
       description: "Benefit from trending market movements",
-      tags: ["Indicator", "Market movement"]);
+      tags: ["Trending markets"]);
   static StrategyModel strategy3 = StrategyModel(
-      title: "Iceber Orders",
+      title: "Iceberg Orders",
       description: "Slice large orders into multiple small orders.",
-      tags: ["Optimization"]);
+      tags: ["Price optimization"]);
 }

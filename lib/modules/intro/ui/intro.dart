@@ -45,8 +45,8 @@ class Intro extends StatelessWidget {
     return [
       PageViewModel(
         decoration: pageDecoration,
-        title: "Welcome to futurecoin",
-        body: "futurecoin is the simplest crypto trading app ever",
+        title: "Welcome to FutureCoin",
+        body: "The simplest crypto trading app ever",
         image: SizedBox(
           height: imageHeight,
           child: SvgPicture.asset(Assets.introImage1),

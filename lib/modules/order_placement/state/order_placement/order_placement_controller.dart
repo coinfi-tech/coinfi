@@ -14,6 +14,8 @@ class OrderPlacementController extends GetxController {
     _isBuy = value;
   }
 
+  double leverage = 5;
+
   double totalOrderValue = 0.00;
 
   List<bool> productTypeSelected = [true, false];
@@ -68,6 +70,9 @@ class OrderPlacementController extends GetxController {
     for (int i = 0; i < productTypeSelected.length; i++) {
       productTypeSelected[i] = i == index;
     }
+    if (productTypeSelected[0]) leverage = 1;
+    if (productTypeSelected[1]) leverage = 5;
+    totalOrderValue = calculateOrderValue();
     update();
   }
 
@@ -75,6 +80,10 @@ class OrderPlacementController extends GetxController {
     for (int i = 0; i < orderTypeSelected.length; i++) {
       orderTypeSelected[i] = i == index;
     }
+    if (orderTypeSelected[0]) priceInputController.text = "0.00";
+    if (orderTypeSelected[1])
+      priceInputController.text = instrument.price.toStringAsFixed(2);
+    totalOrderValue = calculateOrderValue();
     update();
   }
 
@@ -96,6 +105,25 @@ class OrderPlacementController extends GetxController {
     double price = double.parse(p);
     double quantity = double.parse(quantityInputController.text);
     totalOrderValue = quantity * price;
+    update();
+  }
+
+  double calculateOrderValue() {
+    double quantity = double.parse(quantityInputController.text);
+    double price;
+    if (orderTypeSelected[0]) {
+      price = marketDataController
+          .instrumentMap[instrument.instrument.toLowerCase()]!.value.price;
+    } else {
+      price = double.parse(priceInputController.text);
+      log("price: ${priceInputController.text}");
+    }
+    return (quantity * price) / leverage;
+  }
+
+  void onLeverageChanged(double l) {
+    leverage = l;
+    totalOrderValue = calculateOrderValue();
     update();
   }
 }
