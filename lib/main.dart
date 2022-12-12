@@ -9,7 +9,8 @@ import 'package:get/get_navigation/src/routes/transitions_type.dart';
 
 import 'modules/main/app_main_binding.dart';
 
-void main() {
+void main() async {
+  await Future.delayed(Duration(milliseconds: 1000));
   runApp(const MyApp());
 }
 

@@ -76,6 +76,9 @@ class OrderPlacement extends StatelessWidget {
                 sectionVerticalMargin,
                 targetSection(),
                 sectionVerticalMargin,
+                sectionVerticalMargin,
+                disclaimerSection(),
+                sectionVerticalMargin,
               ],
             ),
           ),
@@ -176,49 +179,55 @@ class OrderPlacement extends StatelessWidget {
   }
 
   Widget bottomBar() {
-    return IntrinsicHeight(
-      child: Column(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              color: AppColors.uiGray_20,
-            ),
-            padding: EdgeInsets.all(12),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                GetBuilder<OrderPlacementController>(
-                  builder: (_) {
-                    return Text(
-                      "Total Order Val. ${AppFormatter.formatCurrencyINR(orderPlacementController.totalOrderValue)}",
-                      style: AppTextStyles.bodySmall
-                          .copyWith(color: AppColors.textGray_70),
-                    );
-                  },
-                ),
-                Text(
-                  "Bal. ${AppFormatter.formatCurrencyINR(10000001)}",
-                  style: AppTextStyles.bodySmall
-                      .copyWith(color: AppColors.textGray_70),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            key: const ValueKey<int>(1),
-            padding: EdgeInsets.symmetric(horizontal: 64, vertical: 16),
-            decoration: BoxDecoration(
-              color: AppColors.bgWhite,
-              boxShadow: AppShadows.bottomNavShadow,
-            ),
-            child: GetBuilder<OrderPlacementController>(
-              builder: (_) => ButtonSwipe(
-                text: _.isBuy ? 'SWIPE TO BUY' : 'SWIPE TO SELL',
-                color: _.isBuy ? AppColors.buyColor : AppColors.sellColor,
+    return Container(
+      color: AppColors.uiWhite,
+      child: IntrinsicHeight(
+        child: Column(
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                color: AppColors.uiGray_20,
+              ),
+              padding: EdgeInsets.all(12),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  GetBuilder<OrderPlacementController>(
+                    builder: (_) {
+                      return Text(
+                        "Total Order Val. ${AppFormatter.formatCurrencyINR(orderPlacementController.totalOrderValue)}",
+                        style: AppTextStyles.bodySmall
+                            .copyWith(color: AppColors.textGray_70),
+                      );
+                    },
+                  ),
+                  Text(
+                    "Bal. ${AppFormatter.formatCurrencyINR(10000001)}",
+                    style: AppTextStyles.bodySmall
+                        .copyWith(color: AppColors.textGray_70),
+                  ),
+                ],
               ),
             ),
-          ),
-        ],
+            Container(
+              key: const ValueKey<int>(1),
+              padding: EdgeInsets.symmetric(horizontal: 64, vertical: 16),
+              decoration: BoxDecoration(
+                color: AppColors.bgWhite,
+                // boxShadow: AppShadows.bottomNavShadow,
+              ),
+              // width: double.infinity,
+              child: Container(
+                child: GetBuilder<OrderPlacementController>(
+                  builder: (_) => ButtonSwipe(
+                    text: _.isBuy ? 'SWIPE TO BUY' : 'SWIPE TO SELL',
+                    color: _.isBuy ? AppColors.buyColor : AppColors.sellColor,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -399,17 +408,48 @@ class OrderPlacement extends StatelessWidget {
 
   Widget leverageSection() {
     return GetBuilder<OrderPlacementController>(
-        builder: (_) => Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                OrderFormLabel(
-                    label: "Leverage",
-                    color: _.isBuy ? AppColors.buyColor : AppColors.sellColor,
-                    icon: Icons.show_chart),
-                LeverageSlider(
-                  color: _.isBuy ? AppColors.buyColor : AppColors.sellColor,
-                ),
-              ],
-            ));
+      builder: (_) => Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          OrderFormLabel(
+              label: "Leverage",
+              color: _.isBuy ? AppColors.buyColor : AppColors.sellColor,
+              icon: Icons.show_chart),
+          LeverageSlider(
+            color: _.isBuy ? AppColors.buyColor : AppColors.sellColor,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget disclaimerSection() {
+    Color color = AppColors.textGray_60;
+
+    return Row(
+      children: [
+        Icon(
+          Icons.info_outline,
+          color: color,
+          size: 16,
+        ),
+        SizedBox(
+          width: 4,
+        ),
+        GetBuilder<OrderPlacementController>(
+          builder: (_) {
+            return _.productTypeSelected[0]
+                ? Text(
+                    "You are buying a perpetual futures contract.",
+                    style: AppTextStyles.bodySmall.copyWith(color: color),
+                  )
+                : Text(
+                    "You are trading a perpetual futures contract.",
+                    style: AppTextStyles.bodySmall.copyWith(color: color),
+                  );
+          },
+        ),
+      ],
+    );
   }
 }
